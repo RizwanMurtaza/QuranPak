@@ -9,9 +9,9 @@
             <div class="flex items-center space-x-4">
               <div class="relative">
                 <!-- Bismillah Circular Design -->
-                <div class="w-16 h-16 bg-gradient-to-br from-emerald-600 via-teal-600 to-emerald-700 rounded-full flex items-center justify-center shadow-xl border-2 border-emerald-300">
+                <div class="w-20 h-20 bg-gradient-to-br from-emerald-600 via-teal-600 to-emerald-700 rounded-full flex items-center justify-center shadow-xl border-2 border-emerald-300">
                   <!-- Arabic Bismillah Text -->
-                  <div class="text-white bismillah-text text-center">
+                  <div class="text-white bismillah-text-large text-center">
                     بِسْمِ<br>اللّٰهِ
                   </div>
                 </div>
@@ -20,10 +20,10 @@
                 <div class="absolute -bottom-1 -left-1 w-3 h-3 bg-emerald-400 rounded-full opacity-60"></div>
               </div>
               <div class="hidden sm:block">
-                <h1 class="text-2xl font-bold text-emerald-800 dark:text-emerald-200 font-serif">
+                <h1 class="text-3xl font-extrabold text-emerald-800 dark:text-emerald-200 font-serif tracking-wide">
                   SunnahLife
                 </h1>
-                <p class="text-sm text-emerald-700 dark:text-emerald-300 font-medium -mt-1">
+                <p class="text-base text-emerald-700 dark:text-emerald-300 font-semibold -mt-1">
                   Read, Listen and Learn Quran
                 </p>
               </div>
