@@ -1,0 +1,155 @@
+/* Custom Arabic font imports */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;500;600;700&display=swap');
+
+@import './base.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Arabic text styling */
+.arabic-text {
+  font-family: 'Scheherazade New', 'Amiri', 'Noto Naskh Arabic', serif;
+  direction: rtl;
+  text-align: right;
+  line-height: 2;
+  font-feature-settings: "liga", "dlig", "calt";
+}
+
+.quran-text {
+  font-family: 'Scheherazade New', serif;
+  direction: rtl;
+  text-align: center;
+  line-height: 2.2;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #1f2937;
+}
+
+.dark .quran-text {
+  color: #f9fafb;
+}
+
+.verse-number {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #d97706, #f59e0b);
+  color: white;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin: 0 0.5rem;
+}
+
+.surah-header {
+  background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+  border: 2px solid #10b981;
+  border-radius: 1rem;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  margin: 2rem 0;
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.surah-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+}
+
+.dark .surah-header {
+  background: linear-gradient(135deg, #064e3b, #065f46);
+  border-color: #10b981;
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.2);
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Islamic geometric patterns */
+.islamic-pattern {
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(20, 184, 166, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 60%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+}
+
+.bismillah-text {
+  font-family: 'Scheherazade New', 'Amiri', serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Word hover effects */
+.word-interactive {
+  @apply transition-all duration-200 hover:bg-primary-50 hover:shadow-word rounded-sm cursor-pointer;
+}
+
+.word-interactive:hover {
+  transform: translateY(-1px);
+}
+
+/* Dark mode overrides */
+.dark .word-interactive:hover {
+  @apply hover:bg-gray-700;
+}
+
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #059669, #14b8a6);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #047857, #0f766e);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-track {
+  background: #374151;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #10b981, #14b8a6);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #059669, #0d9488);
+}

@@ -1,0 +1,57 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gradient Background Circle -->
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#047857;stop-opacity:1" />
+    </radialGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main Background -->
+  <circle cx="256" cy="256" r="256" fill="url(#bgGrad)"/>
+  
+  <!-- Decorative Ring -->
+  <circle cx="256" cy="256" r="220" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+  <circle cx="256" cy="256" r="200" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  
+  <!-- Central Islamic Design -->
+  <g transform="translate(256, 256)">
+    <!-- Bismillah Text Background Circle -->
+    <circle cx="0" cy="0" r="80" fill="rgba(255,255,255,0.95)" stroke="rgba(6,95,70,0.3)" stroke-width="2"/>
+    
+    <!-- Arabic Bismillah Text -->
+    <text x="0" y="-10" font-family="serif" font-size="24" font-weight="bold" fill="#047857" text-anchor="middle">
+      بِسْمِ
+    </text>
+    <text x="0" y="20" font-family="serif" font-size="24" font-weight="bold" fill="#047857" text-anchor="middle">
+      اللّٰهِ
+    </text>
+    
+    <!-- Decorative Elements -->
+    <circle cx="50" cy="-50" r="8" fill="url(#goldGrad)" opacity="0.8"/>
+    <circle cx="-50" cy="50" r="6" fill="rgba(16,185,129,0.6)"/>
+    <circle cx="60" cy="40" r="4" fill="rgba(255,255,255,0.8)"/>
+    <circle cx="-60" cy="-40" r="5" fill="rgba(16,185,129,0.5)"/>
+    
+    <!-- Islamic Geometric Pattern -->
+    <g stroke="rgba(6,95,70,0.3)" stroke-width="1.5" fill="none">
+      <polygon points="0,-120 35,-85 0,-50 -35,-85" opacity="0.4"/>
+      <polygon points="85,0 50,35 85,70 120,35" opacity="0.4"/>
+      <polygon points="0,120 -35,85 0,50 35,85" opacity="0.4"/>
+      <polygon points="-85,0 -50,-35 -85,-70 -120,-35" opacity="0.4"/>
+    </g>
+  </g>
+  
+  <!-- Bottom Brand Text -->
+  <text x="256" y="430" font-family="serif" font-size="32" font-weight="bold" fill="white" text-anchor="middle" opacity="0.9">
+    SunnahLife
+  </text>
+  <text x="256" y="460" font-family="sans-serif" font-size="16" fill="rgba(255,255,255,0.8)" text-anchor="middle">
+    Read, Listen and Learn Quran
+  </text>
+</svg>

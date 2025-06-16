@@ -1,0 +1,48 @@
+<svg width="192" height="192" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="256" fill="#16a34a"/>
+  
+  <!-- Inner Circle -->
+  <circle cx="256" cy="256" r="200" fill="#15803d" opacity="0.3"/>
+  
+  <!-- Quran Book Icon -->
+  <g transform="translate(156, 156)">
+    <!-- Book Pages -->
+    <rect x="20" y="20" width="160" height="180" rx="8" fill="#ffffff" opacity="0.95"/>
+    <rect x="15" y="15" width="160" height="180" rx="8" fill="#f3f4f6" opacity="0.8"/>
+    <rect x="10" y="10" width="160" height="180" rx="8" fill="#e5e7eb"/>
+    
+    <!-- Book Spine -->
+    <rect x="0" y="10" width="25" height="180" rx="8" fill="#065f46"/>
+    
+    <!-- Arabic Text Lines -->
+    <g fill="#374151" opacity="0.8">
+      <rect x="35" y="40" width="120" height="3" rx="1.5"/>
+      <rect x="35" y="55" width="100" height="3" rx="1.5"/>
+      <rect x="35" y="70" width="110" height="3" rx="1.5"/>
+      <rect x="35" y="85" width="95" height="3" rx="1.5"/>
+      
+      <rect x="35" y="110" width="115" height="3" rx="1.5"/>
+      <rect x="35" y="125" width="105" height="3" rx="1.5"/>
+      <rect x="35" y="140" width="90" height="3" rx="1.5"/>
+      
+      <rect x="35" y="165" width="100" height="3" rx="1.5"/>
+    </g>
+    
+    <!-- Decorative Islamic Pattern -->
+    <g fill="#16a34a" opacity="0.6">
+      <circle cx="150" cy="45" r="8"/>
+      <circle cx="140" cy="35" r="4"/>
+      <circle cx="160" cy="35" r="4"/>
+      <circle cx="150" cy="25" r="6"/>
+    </g>
+  </g>
+  
+  <!-- Bottom Text (scaled based on size) -->
+  <text x="256" y="420" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">
+    QURAN
+  </text>
+  <text x="256" y="450" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle" opacity="0.9">
+    Word by Word
+  </text>
+</svg>
