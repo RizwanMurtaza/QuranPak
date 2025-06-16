@@ -1,0 +1,65 @@
+User-agent: *
+Allow: /
+
+# Specifically allow important pages
+Allow: /
+Allow: /surahs
+Allow: /surah/*
+Allow: /search
+Allow: /bookmarks
+Allow: /settings
+
+# Disallow search result pages to prevent duplicate content
+Disallow: /search?*
+
+# Allow specific search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# Sitemap location
+Sitemap: https://quranpak.sunnahlife.com/sitemap.xml
+
+# Crawl delay (be respectful)
+Crawl-delay: 1
+
+# Cache and temporary files
+Disallow: /*.json$
+Disallow: /api/
+Disallow: /dev-dist/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.vscode/
+Disallow: /dist/
+
+# Allow media files
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.webp
+Allow: /*.ico
+Allow: /*.woff
+Allow: /*.woff2
+Allow: /*.ttf
+Allow: /*.eot
+Allow: /*.mp3
+Allow: /*.wav
+Allow: /*.ogg

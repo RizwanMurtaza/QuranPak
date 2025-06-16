@@ -1,0 +1,846 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
+                           http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- All Surahs Page -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surahs</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Surah 1 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/1</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 2 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/2</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 3 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/3</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 4 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/4</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 5 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/5</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 6 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/6</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 7 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/7</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 8 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/8</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 9 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/9</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 10 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/10</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 11 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/11</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 12 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/12</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 13 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/13</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 14 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/14</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 15 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/15</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 16 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/16</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 17 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/17</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 18 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/18</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 19 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/19</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 20 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/20</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 21 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/21</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 22 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/22</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 23 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/23</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 24 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/24</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 25 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/25</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 26 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/26</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 27 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/27</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 28 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/28</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 29 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/29</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 30 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/30</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 31 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/31</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 32 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/32</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 33 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/33</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 34 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/34</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 35 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/35</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 36 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/36</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 37 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/37</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 38 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/38</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 39 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/39</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 40 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/40</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 41 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/41</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 42 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/42</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 43 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/43</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 44 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/44</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 45 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/45</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 46 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/46</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 47 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/47</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 48 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/48</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 49 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/49</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 50 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/50</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 51 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/51</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 52 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/52</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 53 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/53</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 54 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/54</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 55 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/55</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 56 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/56</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 57 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/57</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 58 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/58</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 59 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/59</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 60 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/60</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 61 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/61</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 62 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/62</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 63 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/63</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 64 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/64</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 65 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/65</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 66 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/66</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 67 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/67</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 68 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/68</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 69 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/69</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 70 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/70</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 71 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/71</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 72 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/72</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 73 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/73</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 74 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/74</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 75 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/75</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 76 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/76</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 77 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/77</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 78 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/78</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 79 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/79</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 80 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/80</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 81 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/81</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 82 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/82</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 83 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/83</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 84 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/84</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 85 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/85</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 86 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/86</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 87 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/87</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 88 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/88</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 89 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/89</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 90 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/90</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 91 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/91</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 92 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/92</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 93 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/93</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 94 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/94</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 95 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/95</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 96 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/96</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 97 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/97</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 98 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/98</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 99 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/99</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 100 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/100</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 101 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/101</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 102 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/102</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 103 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/103</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 104 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/104</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 105 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/105</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 106 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/106</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 107 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/107</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 108 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/108</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 109 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/109</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 110 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/110</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 111 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/111</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 112 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/112</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 113 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/113</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Surah 114 -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/surah/114</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Search Page -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/search</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Bookmarks Page -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/bookmarks</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Settings Page -->
+  <url>
+    <loc>https://quranpak.sunnahlife.com/settings</loc>
+    <lastmod>2025-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+</urlset>
