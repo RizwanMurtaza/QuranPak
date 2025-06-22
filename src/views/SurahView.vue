@@ -133,6 +133,7 @@
           <ToggleSwitch v-model="showWordByWord" label="Words" />
           <ToggleSwitch v-model="showTransliteration" label="Roman" />
           <ToggleSwitch v-model="showTranslation" label="Translation" />
+          <ToggleSwitch v-model="showTafseer" label="Tafseer" />
         </div>
         
         <!-- Action Buttons - Always in one row -->
@@ -148,6 +149,19 @@
               </svg>
               <span class="hidden sm:inline">Translations</span>
               <span class="sm:hidden">Trans</span> ({{ selectedTranslations.length }})
+            </Button>
+            
+            <Button
+              @click="showTafseerSelector = true"
+              variant="outline"
+              size="sm"
+              class="border-calligraphy-300 text-calligraphy-700 hover:bg-calligraphy-100 dark:border-calligraphy-600 dark:text-calligraphy-300 dark:hover:bg-calligraphy-900/20 text-xs sm:text-sm"
+            >
+              <svg class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.168 18.477 18.582 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+              <span class="hidden sm:inline">Tafseers</span>
+              <span class="sm:hidden">Tafseer</span> ({{ selectedTafseers.length }})
             </Button>
             
             <Button
@@ -199,6 +213,8 @@
           :show-word-by-word="showWordByWord"
           :show-transliteration="showTransliteration"
           :show-translation="showTranslation"
+          :show-tafseer="showTafseer"
+          :selected-tafseers="selectedTafseers"
           :show-metadata="true"
           :is-bookmarked="isBookmarked(verse.surahNumber, verse.verseNumber)"
           :surah-name="currentSurah?.englishName || ''"
@@ -305,6 +321,92 @@
                 size="sm"
                 @click="applySelectedTranslations"
                 :disabled="selectedTranslators.length === 0"
+                class="text-xs px-3 py-1"
+              >
+                Apply
+              </Button>
+            </div>
+          </div>
+        </div>
+      </Modal>
+    </Teleport>
+
+    <!-- Compact Tafseer Selector Modal -->
+    <Teleport to="body">
+      <Modal 
+        v-model="showTafseerSelector" 
+        title="Select Tafseers"
+        size="sm"
+        @close="showTafseerSelector = false"
+      >
+        <div class="space-y-3">
+          <!-- Quick Language Tabs -->
+          <div class="flex flex-wrap gap-1">
+            <button
+              v-for="lang in availableTafseerLanguages.slice(0, 6)"
+              :key="lang.code"
+              @click="selectTafseerLanguageQuick(lang.code)"
+              :class="[
+                'px-2 py-1 text-xs rounded-md transition-colors border',
+                selectedTafseerLanguage === lang.code 
+                  ? 'bg-calligraphy-100 dark:bg-calligraphy-900/30 border-calligraphy-300 dark:border-calligraphy-600 text-calligraphy-800 dark:text-calligraphy-200'
+                  : 'bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700'
+              ]"
+            >
+              {{ lang.native }}
+            </button>
+          </div>
+          
+          <!-- Compact Tafseers List -->
+          <div v-if="selectedTafseerLanguage" class="max-h-60 overflow-y-auto">
+            <div class="text-xs font-medium text-calligraphy-800 dark:text-calligraphy-200 mb-2">
+              {{ getLanguageName(selectedTafseerLanguage) }} Tafseers
+            </div>
+            <div class="space-y-1">
+              <label 
+                v-for="tafseer in availableTafseersForLanguage" 
+                :key="tafseer.identifier"
+                class="flex items-center space-x-2 p-2 rounded-lg hover:bg-calligraphy-50 dark:hover:bg-calligraphy-900/20 cursor-pointer transition-colors text-sm"
+                :class="{ 'bg-calligraphy-50 dark:bg-calligraphy-900/20': selectedTafseers.includes(tafseer.identifier) }"
+              >
+                <input
+                  type="checkbox"
+                  :value="tafseer.identifier"
+                  :checked="selectedTafseers.includes(tafseer.identifier)"
+                  @change="toggleTafseer(tafseer.identifier)"
+                  class="h-3 w-3 text-calligraphy-600 focus:ring-calligraphy-500 border-calligraphy-300 rounded"
+                >
+                <div class="flex-1 min-w-0">
+                  <div class="font-medium text-calligraphy-900 dark:text-calligraphy-100 truncate text-sm">
+                    {{ tafseer.englishName }}
+                  </div>
+                  <div v-if="tafseer.name !== tafseer.englishName" class="text-xs text-calligraphy-600 dark:text-calligraphy-400 truncate">
+                    {{ tafseer.name }}
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+          
+          <!-- Compact Action buttons -->
+          <div class="flex justify-between items-center pt-2 border-t border-calligraphy-200 dark:border-calligraphy-700">
+            <div class="text-xs text-calligraphy-600 dark:text-calligraphy-400">
+              {{ selectedTafseers.length }} selected
+            </div>
+            <div class="flex space-x-2">
+              <Button 
+                variant="outline" 
+                size="sm"
+                @click="showTafseerSelector = false"
+                class="text-xs px-3 py-1"
+              >
+                Cancel
+              </Button>
+              <Button 
+                variant="primary" 
+                size="sm"
+                @click="applySelectedTafseers"
+                :disabled="selectedTafseers.length === 0"
                 class="text-xs px-3 py-1"
               >
                 Apply
@@ -462,27 +564,35 @@ import Modal from '@/components/ui/Modal.vue'
 import ToggleSwitch from '@/components/ui/ToggleSwitch.vue'
 import VerseCard from '@/components/quran/VerseCard.vue'
 import TranslationSelector from '@/components/quran/TranslationSelector.vue'
+import TafseerSelector from '@/components/quran/TafseerSelector.vue'
 import AudioPlayer from '@/components/quran/AudioPlayer.vue'
 import SurahNavigation from '@/components/layout/SurahNavigation.vue'
 import { getGlobalAyahNumber } from '@/utils/quranUtils'
+import { useQuranAPI } from '@/composables/useQuranAPI'
 
 const route = useRoute()
 const quranStore = useQuranStore()
 const userStore = useUserStore()
 const settingsStore = useSettingsStore()
+const quranAPI = useQuranAPI()
 
 const props = defineProps<{
   id: number
 }>()
 
-// State
-const showWordByWord = ref(false)
-const showTransliteration = ref(false)
-const showTranslation = ref(true)
+// State - Connect to settings store with proper reactive refs
+const showWordByWord = ref(settingsStore.showWordByWord)
+const showTransliteration = ref(settingsStore.showTransliteration)
+const showTranslation = ref(settingsStore.showTranslation)
+const showTafseer = ref(settingsStore.showTafseer)
 const showTranslationSelector = ref(false)
+const showTafseerSelector = ref(false)
 const selectedLanguage = ref('')
 const selectedTranslators = ref<string[]>([])
+const selectedTafseers = ref<string[]>(settingsStore.selectedTafseers)
+const selectedTafseerLanguage = ref('')
 const availableTranslatorsForLanguage = ref<any[]>([])
+const availableTafseersForLanguage = ref<any[]>([])
 const showReciterSelector = ref(false)
 const showTypographySelector = ref(false)
 const currentPlayingVerse = ref<number | null>(null)
@@ -713,6 +823,14 @@ const availableLanguages = [
   { code: 'bn', name: 'Bengali', native: 'বাংলা' }
 ]
 
+// Available tafseer languages (subset of translation languages)
+const availableTafseerLanguages = [
+  { code: 'en', name: 'English', native: 'English' },
+  { code: 'ur', name: 'Urdu', native: 'اردو' },
+  { code: 'ar', name: 'Arabic', native: 'العربية' },
+  { code: 'fa', name: 'Persian', native: 'فارسی' }
+]
+
 // Translation database organized by language
 const translationDatabase: Record<string, any[]> = {
   en: [
@@ -734,32 +852,46 @@ const translationDatabase: Record<string, any[]> = {
     { identifier: 'ar.quran', englishName: 'Original Arabic', author: 'Quran (Arabic)' }
   ],
   fr: [
-    { identifier: 'fr.hamidullah', englishName: 'Hamidullah', author: 'Muhammad Hamidullah' },
-    { identifier: 'fr.kazimirski', englishName: 'Kazimirski', author: 'A. de Biberstein Kazimirski' }
+    { identifier: 'fr.hamidullah', englishName: 'Hamidullah', author: 'Muhammad Hamidullah' }
   ],
   es: [
-    { identifier: 'es.cortes', englishName: 'Cortés', author: 'Julio Cortés' },
-    { identifier: 'es.garcia', englishName: 'García', author: 'Raul González Bórnez' }
+    { identifier: 'es.cortes', englishName: 'Cortes', author: 'Julio Cortes' }
   ],
   de: [
-    { identifier: 'de.bubenheim', englishName: 'Bubenheim & Elyas', author: 'Frank Bubenheim and Nadeem Elyas' },
-    { identifier: 'de.khoury', englishName: 'Khoury', author: 'Adel Theodor Khoury' }
+    { identifier: 'de.bubenheim', englishName: 'Bubenheim & Elyas', author: 'A. S. F. Bubenheim and N. Elyas' }
   ],
   id: [
-    { identifier: 'id.indonesian', englishName: 'Indonesian Ministry', author: 'Indonesian Ministry of Religious Affairs' },
-    { identifier: 'id.muntakhab', englishName: 'Muntakhab', author: 'Muntakhab' }
+    { identifier: 'id.indonesian', englishName: 'Indonesian Ministry of Religious Affairs', author: 'Indonesian Ministry of Religious Affairs' }
   ],
   tr: [
-    { identifier: 'tr.diyanet', englishName: 'Diyanet', author: 'Diyanet İşleri Başkanlığı' },
-    { identifier: 'tr.vakfi', englishName: 'Vakfi', author: 'Diyanet Vakfı' }
+    { identifier: 'tr.ates', englishName: 'Süleyman Ateş', author: 'Süleyman Ateş' }
   ],
   fa: [
-    { identifier: 'fa.makarem', englishName: 'Makarem Shirazi', author: 'Naser Makarem Shirazi' },
-    { identifier: 'fa.ansarian', englishName: 'Ansarian', author: 'Hussain Ansarian' }
+    { identifier: 'fa.makarem', englishName: 'Makarem Shirazi', author: 'Naser Makarem Shirazi' }
   ],
   bn: [
-    { identifier: 'bn.bengali', englishName: 'Bengali Translation', author: 'Muhiuddin Khan' },
-    { identifier: 'bn.hoque', englishName: 'Hoque', author: 'Zohurul Hoque' }
+    { identifier: 'bn.bengali', englishName: 'Muhiuddin Khan', author: 'Muhiuddin Khan' }
+  ]
+}
+
+// Tafseer database organized by language
+const tafseerDatabase: Record<string, any[]> = {
+  en: [
+    { identifier: 'en.ibnkathir', englishName: 'Ibn Kathir', name: 'Tafsir Ibn Kathir' },
+    { identifier: 'en.maarifulquran', englishName: 'Maarif ul Quran', name: 'Ma\'arif al-Qur\'an' },
+    { identifier: 'en.tafheem', englishName: 'Tafheem ul Quran', name: 'Tafhim al-Qur\'an' }
+  ],
+  ar: [
+    { identifier: 'ar.muyassar', englishName: 'Al-Muyassar', name: 'التفسير الميسر' },
+    { identifier: 'ar.jalalayn', englishName: 'Tafsir al-Jalalayn', name: 'تفسير الجلالين' },
+    { identifier: 'ar.ibnkatheer', englishName: 'Ibn Kathir', name: 'تفسير ابن كثير' }
+  ],
+  ur: [
+    { identifier: 'ur.jalandhri', englishName: 'Jalandhri', name: 'تفسیر جالندھری' },
+    { identifier: 'ur.kanzulimaan', englishName: 'Kanz ul Imaan', name: 'کنز الایمان' }
+  ],
+  fa: [
+    { identifier: 'fa.makarem', englishName: 'Tafsir Nemooneh', name: 'تفسیر نمونه' }
   ]
 }
 
@@ -801,12 +933,29 @@ function updateTranslatorsForLanguage() {
   selectedTranslators.value = [] // Reset translators when language changes
 }
 
+function updateTafseersForLanguage() {
+  if (selectedTafseerLanguage.value && tafseerDatabase[selectedTafseerLanguage.value]) {
+    availableTafseersForLanguage.value = tafseerDatabase[selectedTafseerLanguage.value]
+  } else {
+    availableTafseersForLanguage.value = []
+  }
+}
+
 function toggleTranslator(translatorId: string) {
   const index = selectedTranslators.value.indexOf(translatorId)
   if (index > -1) {
     selectedTranslators.value.splice(index, 1)
   } else {
     selectedTranslators.value.push(translatorId)
+  }
+}
+
+function toggleTafseer(tafseerId: string) {
+  const index = selectedTafseers.value.indexOf(tafseerId)
+  if (index > -1) {
+    selectedTafseers.value.splice(index, 1)
+  } else {
+    selectedTafseers.value.push(tafseerId)
   }
 }
 
@@ -846,15 +995,63 @@ function applySelectedTranslations() {
   }
 }
 
+function applySelectedTafseers() {
+  if (selectedTafseers.value.length > 0) {
+    settingsStore.setSelectedTafseers(selectedTafseers.value)
+    showTafseerSelector.value = false
+    
+    // Show success feedback
+    console.log('Tafseers applied:', selectedTafseers.value)
+    
+    // Reset form
+    selectedTafseerLanguage.value = ''
+    availableTafseersForLanguage.value = []
+    
+    // Reload surah with new tafseers if needed
+    if (showTafseer.value) {
+      loadSurah()
+    }
+  }
+}
+
 watch(() => props.id, (newId) => {
   if (newId) {
     loadSurah()
   }
 })
 
+// Watch for toggle changes and sync with settings store
+watch(showWordByWord, (newValue) => {
+  if (newValue !== settingsStore.showWordByWord) {
+    settingsStore.toggleWordByWord()
+  }
+})
+
+watch(showTransliteration, (newValue) => {
+  if (newValue !== settingsStore.showTransliteration) {
+    settingsStore.toggleTransliteration()
+  }
+})
+
+watch(showTranslation, (newValue) => {
+  if (newValue !== settingsStore.showTranslation) {
+    settingsStore.toggleTranslation()
+  }
+})
+
+watch(showTafseer, (newValue) => {
+  if (newValue !== settingsStore.showTafseer) {
+    settingsStore.toggleTafseer()
+  }
+})
+
+watch(selectedTafseers, (newValue) => {
+  settingsStore.setSelectedTafseers(newValue)
+}, { deep: true })
+
 onMounted(() => {
   loadSurah()
-  // Load saved Arabic font preference
+  // Load saved preferences
   selectedTypography.value = settingsStore.arabicFont
 })
 
@@ -862,6 +1059,11 @@ onMounted(() => {
 function selectLanguageQuick(langCode: string) {
   selectedLanguage.value = langCode
   updateTranslatorsForLanguage()
+}
+
+function selectTafseerLanguageQuick(langCode: string) {
+  selectedTafseerLanguage.value = langCode
+  updateTafseersForLanguage()
 }
 
 function getLanguageName(langCode: string): string {

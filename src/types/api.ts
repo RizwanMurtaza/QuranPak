@@ -488,6 +488,224 @@ export const TRANSLATION_GROUPS = {
   italian: ['it.piccardo']
 }
 
+// Popular Tafseers (Commentaries)
+export const POPULAR_TAFSEERS: Record<string, Edition> = {
+  // Arabic Tafseers
+  'ar.muyassar': {
+    identifier: 'ar.muyassar',
+    language: 'ar',
+    name: 'التفسير الميسر',
+    englishName: 'Tafseer Al-Muyassar',
+    format: 'text',
+    type: 'tafsir',
+    direction: 'rtl'
+  },
+  'ar.jalalayn': {
+    identifier: 'ar.jalalayn',
+    language: 'ar',
+    name: 'تفسير الجلالين',
+    englishName: 'Tafseer Al-Jalalayn',
+    format: 'text',
+    type: 'tafsir',
+    direction: 'rtl'
+  },
+  'ar.qurtubi': {
+    identifier: 'ar.qurtubi',
+    language: 'ar',
+    name: 'تفسير القرطبي',
+    englishName: 'Tafseer Al-Qurtubi',
+    format: 'text',
+    type: 'tafsir',
+    direction: 'rtl'
+  },
+  'ar.tabari': {
+    identifier: 'ar.tabari',
+    language: 'ar',
+    name: 'تفسير الطبري',
+    englishName: 'Tafseer At-Tabari',
+    format: 'text',
+    type: 'tafsir',
+    direction: 'rtl'
+  },
+  'ar.baghawi': {
+    identifier: 'ar.baghawi',
+    language: 'ar',
+    name: 'تفسير البغوي',
+    englishName: 'Tafseer Al-Baghawi',
+    format: 'text',
+    type: 'tafsir',
+    direction: 'rtl'
+  },
+  'ar.kathir': {
+    identifier: 'ar.ibnkatheer',
+    language: 'ar',
+    name: 'تفسير ابن كثير',
+    englishName: 'Tafseer Ibn Kathir',
+    format: 'text',
+    type: 'tafsir',
+    direction: 'rtl'
+  },
+  'ar.waseet': {
+    identifier: 'ar.waseet',
+    language: 'ar',
+    name: 'التفسير الوسيط',
+    englishName: 'At-Tafseer Al-Waseet',
+    format: 'text',
+    type: 'tafsir',
+    direction: 'rtl'
+  },
+
+  // English Tafseers
+  'en.kathir': {
+    identifier: 'en.ibnkathir',
+    language: 'en',
+    name: 'Ibn Kathir',
+    englishName: 'Tafsir Ibn Kathir (English)',
+    format: 'text',
+    type: 'tafsir',
+    direction: 'ltr'
+  },
+  'en.maarifulquran': {
+    identifier: 'en.maarifulquran',
+    language: 'en',
+    name: 'Maarif-ul-Quran',
+    englishName: 'Maarif-ul-Quran (English)',
+    format: 'text',
+    type: 'tafsir',
+    direction: 'ltr'
+  },
+  'en.tafheem': {
+    identifier: 'en.tafheem',
+    language: 'en',
+    name: 'Tafheem-ul-Quran',
+    englishName: 'Tafheem-ul-Quran (Maududi)',
+    format: 'text',
+    type: 'tafsir',
+    direction: 'ltr'
+  },
+
+  // Urdu Tafseers
+  'ur.jalandhri': {
+    identifier: 'ur.jalandhri',
+    language: 'ur',
+    name: 'تفسیر فتح محمد جالندھری',
+    englishName: 'Tafseer Jalandhri (Urdu)',
+    format: 'text',
+    type: 'tafsir',
+    direction: 'rtl'
+  },
+  'ur.kanzulimaan': {
+    identifier: 'ur.kanzulimaan',
+    language: 'ur',
+    name: 'کنز الایمان',
+    englishName: 'Kanz-ul-Imaan (Urdu)',
+    format: 'text',
+    type: 'tafsir',
+    direction: 'rtl'
+  },
+  'ur.ahsanulbayan': {
+    identifier: 'ur.ahsanulbayan',
+    language: 'ur',
+    name: 'احسن البیان',
+    englishName: 'Ahsan-ul-Bayan (Urdu)',
+    format: 'text',
+    type: 'tafsir',
+    direction: 'rtl'
+  },
+
+  // Persian Tafseers
+  'fa.makarem': {
+    identifier: 'fa.makarem',
+    language: 'fa',
+    name: 'تفسیر نمونه',
+    englishName: 'Tafsir Nemooneh (Persian)',
+    format: 'text',
+    type: 'tafsir',
+    direction: 'rtl'
+  },
+
+  // Indonesian Tafseers
+  'id.quraish': {
+    identifier: 'id.quraish',
+    language: 'id',
+    name: 'Tafsir Al-Misbah',
+    englishName: 'Tafsir Al-Misbah (Indonesian)',
+    format: 'text',
+    type: 'tafsir',
+    direction: 'ltr'
+  },
+
+  // Turkish Tafseers
+  'tr.ates': {
+    identifier: 'tr.ates',
+    language: 'tr',
+    name: 'Süleyman Ateş Tefsiri',
+    englishName: 'Ates Tafsir (Turkish)',
+    format: 'text',
+    type: 'tafsir',
+    direction: 'ltr'
+  },
+
+  // French Tafseers
+  'fr.hamidullah': {
+    identifier: 'fr.hamidullah',
+    language: 'fr',
+    name: 'Tafsir Hamidullah',
+    englishName: 'Hamidullah Tafsir (French)',
+    format: 'text',
+    type: 'tafsir',
+    direction: 'ltr'
+  },
+
+  // Bengali Tafseers
+  'bn.muhiuddin': {
+    identifier: 'bn.muhiuddin',
+    language: 'bn',
+    name: 'তাফসীর মুহিউদ্দীন খান',
+    englishName: 'Muhiuddin Khan Tafsir (Bengali)',
+    format: 'text',
+    type: 'tafsir',
+    direction: 'ltr'
+  },
+
+  // Russian Tafseers
+  'ru.kuliev': {
+    identifier: 'ru.kuliev.tafsir',
+    language: 'ru',
+    name: 'Тафсир Кулиев',
+    englishName: 'Kuliev Tafsir (Russian)',
+    format: 'text',
+    type: 'tafsir',
+    direction: 'ltr'
+  }
+}
+
+// Tafseer groups by language
+export const TAFSEER_GROUPS = {
+  arabic: ['ar.muyassar', 'ar.jalalayn', 'ar.qurtubi', 'ar.tabari', 'ar.baghawi', 'ar.kathir', 'ar.waseet'],
+  english: ['en.kathir', 'en.maarifulquran', 'en.tafheem'],
+  urdu: ['ur.jalandhri', 'ur.kanzulimaan', 'ur.ahsanulbayan'],
+  persian: ['fa.makarem'],
+  indonesian: ['id.quraish'],
+  turkish: ['tr.ates'],
+  french: ['fr.hamidullah'],
+  bengali: ['bn.muhiuddin'],
+  russian: ['ru.kuliev']
+}
+
+// Default tafseers for each language
+export const DEFAULT_TAFSEERS = {
+  en: 'en.kathir',
+  ur: 'ur.jalandhri',
+  ar: 'ar.muyassar',
+  fr: 'fr.hamidullah',
+  id: 'id.quraish',
+  tr: 'tr.ates',
+  bn: 'bn.muhiuddin',
+  fa: 'fa.makarem',
+  ru: 'ru.kuliev'
+}
+
 // Default translations for each language
 export const DEFAULT_TRANSLATIONS = {
   en: 'en.sahih',

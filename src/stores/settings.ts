@@ -14,7 +14,10 @@ export const useSettingsStore = defineStore('settings', () => {
   const showTransliteration = ref(true)
   const showTranslation = ref(true)
   const showWordByWord = ref(true)
+  const showTafseer = ref(false)
   const arabicFont = ref('amiri')
+  const selectedTranslations = ref<string[]>(['en.sahih'])
+  const selectedTafseers = ref<string[]>(['en.ibnkathir'])
 
   // Computed properties
   const isDarkMode = computed(() => {
@@ -85,6 +88,21 @@ export const useSettingsStore = defineStore('settings', () => {
     showWordByWord.value = !showWordByWord.value
     saveToLocalStorage()
   }
+
+  function toggleTafseer() {
+    showTafseer.value = !showTafseer.value
+    saveToLocalStorage()
+  }
+
+  function setSelectedTranslations(translations: string[]) {
+    selectedTranslations.value = translations
+    saveToLocalStorage()
+  }
+
+  function setSelectedTafseers(tafseers: string[]) {
+    selectedTafseers.value = tafseers
+    saveToLocalStorage()
+  }
   
   function setArabicFont(font: string) {
     arabicFont.value = font
@@ -110,7 +128,10 @@ export const useSettingsStore = defineStore('settings', () => {
       showTransliteration: showTransliteration.value,
       showTranslation: showTranslation.value,
       showWordByWord: showWordByWord.value,
-      arabicFont: arabicFont.value
+      showTafseer: showTafseer.value,
+      arabicFont: arabicFont.value,
+      selectedTranslations: selectedTranslations.value,
+      selectedTafseers: selectedTafseers.value
     }
     localStorage.setItem('quran-app-settings', JSON.stringify(settings))
   }
@@ -128,7 +149,10 @@ export const useSettingsStore = defineStore('settings', () => {
         showTransliteration.value = settings.showTransliteration !== false
         showTranslation.value = settings.showTranslation !== false
         showWordByWord.value = settings.showWordByWord !== false
+        showTafseer.value = settings.showTafseer || false
         arabicFont.value = settings.arabicFont || 'amiri'
+        selectedTranslations.value = settings.selectedTranslations || ['en.sahih']
+        selectedTafseers.value = settings.selectedTafseers || ['en.ibnkathir']
         updateDocumentTheme()
       } catch (error) {
         console.error('Error loading settings from localStorage:', error)
@@ -145,7 +169,10 @@ export const useSettingsStore = defineStore('settings', () => {
     showTransliteration.value = true
     showTranslation.value = true
     showWordByWord.value = true
+    showTafseer.value = false
     arabicFont.value = 'amiri'
+    selectedTranslations.value = ['en.sahih']
+    selectedTafseers.value = ['en.ibnkathir']
     updateDocumentTheme()
     saveToLocalStorage()
   }
@@ -171,7 +198,10 @@ export const useSettingsStore = defineStore('settings', () => {
     showTransliteration,
     showTranslation,
     showWordByWord,
+    showTafseer,
     arabicFont,
+    selectedTranslations,
+    selectedTafseers,
     isDarkMode,
     fontSizeClass,
     arabicFontSizeClass,
@@ -184,6 +214,9 @@ export const useSettingsStore = defineStore('settings', () => {
     toggleTransliteration,
     toggleTranslation,
     toggleWordByWord,
+    toggleTafseer,
+    setSelectedTranslations,
+    setSelectedTafseers,
     resetToDefaults
   }
 })

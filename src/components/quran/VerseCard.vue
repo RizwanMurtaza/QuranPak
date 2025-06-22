@@ -136,6 +136,31 @@
       </div>
     </div>
 
+    <!-- Tafseer Section -->
+    <div v-if="showTafseer && selectedTafseers.length > 0" class="space-y-4 mt-4">
+      <div
+        v-for="tafseerId in selectedTafseers"
+        :key="tafseerId"
+        class="tafseer-block"
+      >
+        <div class="flex items-center space-x-2 mb-2">
+          <div class="w-2 h-2 rounded-full bg-islamic-brown"></div>
+          <span class="text-sm font-semibold text-islamic-brown dark:text-islamic-gold flex items-center space-x-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.168 18.477 18.582 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+            <span>{{ getTafseerName(tafseerId) }}</span>
+          </span>
+        </div>
+        <div 
+          class="text-sm text-calligraphy-800 dark:text-calligraphy-200 leading-relaxed bg-gradient-to-r from-calligraphy-50 to-islamic-cream/30 dark:from-calligraphy-900/20 dark:to-islamic-charcoal/30 p-4 rounded-lg border-l-4 border-islamic-brown"
+          :class="getTafseerDirection(tafseerId) === 'rtl' ? 'text-right font-arabic' : 'text-left'"
+        >
+          {{ getTafseerText(tafseerId) }}
+        </div>
+      </div>
+    </div>
+
     <!-- Compact Verse Metadata -->
     <div v-if="showMetadata && (verse.page || verse.juz || verse.sajda)" class="mt-3 pt-3 border-t border-calligraphy-100 dark:border-calligraphy-900/30">
       <div class="flex flex-wrap items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
@@ -187,6 +212,8 @@ interface Props {
   showWordByWord?: boolean
   showTransliteration?: boolean
   showTranslation?: boolean
+  showTafseer?: boolean
+  selectedTafseers?: string[]
   showMetadata?: boolean
   isHighlighted?: boolean
   isBookmarked?: boolean
@@ -212,6 +239,8 @@ const props = withDefaults(defineProps<Props>(), {
   showWordByWord: false,
   showTransliteration: false,
   showTranslation: false,
+  showTafseer: false,
+  selectedTafseers: () => [],
   showMetadata: false,
   isHighlighted: false,
   isBookmarked: false,
@@ -257,6 +286,31 @@ const getTranslationName = (translationId: string) => {
 const getTranslationDirection = (translationId: string) => {
   const info = quranAPI.getTranslationInfo(translationId)
   return info?.direction || 'ltr'
+}
+
+const getTafseerName = (tafseerId: string) => {
+  const info = quranAPI.getTafseerInfo(tafseerId)
+  return info?.englishName || tafseerId
+}
+
+const getTafseerDirection = (tafseerId: string) => {
+  const info = quranAPI.getTafseerInfo(tafseerId)
+  return info?.direction || 'ltr'
+}
+
+const getTafseerText = (tafseerId: string) => {
+  // For now, return a placeholder text since we need to fetch tafseer data from API
+  // In a real implementation, this would fetch from the API
+  const info = quranAPI.getTafseerInfo(tafseerId)
+  const sampleTexts: Record<string, string> = {
+    'ar.muyassar': 'هذا تفسير ميسر لهذه الآية الكريمة، يوضح معناها بأسلوب واضح ومفهوم.',
+    'ar.jalalayn': 'تفسير الجلالين: شرح مختصر ومفيد لمعاني القرآن الكريم.',
+    'en.ibnkathir': 'Ibn Kathir explains this verse with detailed analysis of its meaning, context, and implications for believers.',
+    'en.maarifulquran': 'Maarif-ul-Quran provides comprehensive commentary on this verse, explaining its significance in Islamic theology.',
+    'ur.jalandhri': 'اس آیت کریمہ کی تفسیر میں اہم نکات اور فوائد بیان کیے گئے ہیں۔'
+  }
+  
+  return sampleTexts[tafseerId] || `Tafseer commentary for this verse from ${info?.englishName || 'Selected Commentary'}.`
 }
 
 // Methods
@@ -576,5 +630,27 @@ onUnmounted(() => {
 
 .arabic-text::selection {
   @apply bg-primary-200 dark:bg-primary-800;
+}
+
+/* Tafseer styling */
+.font-arabic {
+  font-family: 'Amiri', 'Scheherazade New', 'Noto Naskh Arabic', 'Times New Roman', serif;
+  font-weight: 500;
+  line-height: 1.8;
+}
+
+.tafseer-block {
+  position: relative;
+}
+
+.tafseer-block::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(135deg, #8b4513, #b8860b);
+  border-radius: 2px;
 }
 </style>

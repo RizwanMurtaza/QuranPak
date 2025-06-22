@@ -9,9 +9,12 @@ import type {
 } from '@/types/api'
 import {
   POPULAR_TRANSLATIONS,
+  POPULAR_TAFSEERS,
   AUDIO_RECITERS,
   TRANSLATION_GROUPS,
-  DEFAULT_TRANSLATIONS
+  TAFSEER_GROUPS,
+  DEFAULT_TRANSLATIONS,
+  DEFAULT_TAFSEERS
 } from '@/types/api'
 
 export function useQuranAPI() {
@@ -166,6 +169,10 @@ export function useQuranAPI() {
     return quranAPI.getTranslationInfo(identifier)
   }
 
+  const getTafseerInfo = (identifier: string) => {
+    return POPULAR_TAFSEERS[identifier] || Object.values(POPULAR_TAFSEERS).find(t => t.identifier === identifier)
+  }
+
   const getReciterInfo = (identifier: string) => {
     return quranAPI.getReciterInfo(identifier)
   }
@@ -185,9 +192,12 @@ export function useQuranAPI() {
 
   // Computed properties for popular data
   const popularTranslations = computed(() => POPULAR_TRANSLATIONS)
+  const popularTafseers = computed(() => POPULAR_TAFSEERS)
   const audioReciters = computed(() => AUDIO_RECITERS)
   const translationGroups = computed(() => TRANSLATION_GROUPS)
+  const tafseerGroups = computed(() => TAFSEER_GROUPS)
   const defaultTranslations = computed(() => DEFAULT_TRANSLATIONS)
+  const defaultTafseers = computed(() => DEFAULT_TAFSEERS)
 
   // Helper to get language name
   const getLanguageName = (code: string): string => {
@@ -219,6 +229,12 @@ export function useQuranAPI() {
   const getTranslationDirection = (identifier: string): 'ltr' | 'rtl' => {
     const translation = getTranslationInfo(identifier)
     return translation?.direction || 'ltr'
+  }
+
+  // Helper to get tafseer direction
+  const getTafseerDirection = (identifier: string): 'ltr' | 'rtl' => {
+    const tafseer = getTafseerInfo(identifier)
+    return tafseer?.direction || 'ltr'
   }
 
   return {
@@ -269,6 +285,7 @@ export function useQuranAPI() {
     getPopularTranslations,
     getAudioReciters,
     getTranslationInfo,
+    getTafseerInfo,
     getReciterInfo,
     preloadData,
     clearCache,
@@ -276,13 +293,17 @@ export function useQuranAPI() {
     
     // Computed
     popularTranslations,
+    popularTafseers,
     audioReciters,
     translationGroups,
+    tafseerGroups,
     defaultTranslations,
+    defaultTafseers,
     
     // Helpers
     getLanguageName,
     formatAyahReference,
-    getTranslationDirection
+    getTranslationDirection,
+    getTafseerDirection
   }
 }
