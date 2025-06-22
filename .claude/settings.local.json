@@ -1,7 +1,16 @@
 {
   "permissions": {
     "allow": [
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(chmod:*)",
+      "Bash(rm:*)",
+      "Bash(powershell.exe:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run lint)",
+      "Bash(grep:*)",
+      "Bash(sed:*)",
+      "Bash(pkill:*)",
+      "Bash(killall:*)"
     ],
     "deny": []
   }

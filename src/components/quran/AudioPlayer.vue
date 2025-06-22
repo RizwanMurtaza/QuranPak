@@ -1,45 +1,97 @@
 <template>
-  <div class="fixed right-4 top-1/2 transform -translate-y-1/2 z-50 max-w-80 transition-all duration-300"
-       :class="isCollapsed ? 'w-14' : 'w-80'">
-    <div class="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-gray-800 dark:to-gray-700 rounded-xl shadow-xl border-2 border-emerald-200 dark:border-emerald-700 backdrop-blur-sm">
-      <!-- Collapse/Expand Button -->
-      <button
-        @click="toggleCollapse"
-        class="absolute -left-3 top-4 w-7 h-7 bg-gradient-to-br from-emerald-600 to-teal-600 text-white rounded-full flex items-center justify-center hover:from-emerald-700 hover:to-teal-700 transition-all duration-200 shadow-lg border-2 border-emerald-300 z-10"
-      >
-        <svg 
-          class="w-3 h-3 transition-transform duration-300" 
-          :class="{ 'rotate-180': isCollapsed }"
-          fill="none" 
-          stroke="currentColor" 
-          viewBox="0 0 24 24"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-        </svg>
-      </button>
+  <!-- Bottom-centered Audio Player for both Mobile and Desktop -->
+  <div 
+    data-audio-player
+    class="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300"
+    :class="[
+      isExpanded ? 'w-96 max-w-[90vw]' : 'w-auto',
+      mobileMode ? 'bottom-2' : 'bottom-4'
+    ]"
+  >
+    <div class="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl shadow-2xl border-2 border-emerald-200 dark:border-emerald-700 backdrop-blur-sm overflow-hidden">
+      
+      <!-- Collapsed State - Compact Player -->
+      <div v-if="!isExpanded" class="p-3">
+        <div class="flex items-center space-x-3">
+          <!-- Track Info - Clickable to expand -->
+          <div 
+            class="flex-1 min-w-0 cursor-pointer hover:bg-emerald-100 dark:hover:bg-emerald-900/20 rounded-lg p-1 transition-colors"
+            @click.stop="toggleExpanded"
+          >
+            <p class="text-xs font-medium text-emerald-900 dark:text-emerald-100 truncate">
+              {{ currentTrack?.title || 'Quran Audio Player' }}
+            </p>
+            <p class="text-xs text-emerald-700 dark:text-emerald-300">
+              {{ currentReciterData?.englishName || 'Select Reciter' }}
+            </p>
+          </div>
 
-      <!-- Collapsed State -->
-      <div v-if="isCollapsed" class="p-3 flex flex-col items-center space-y-2">
-        <div class="w-8 h-8 bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center border border-emerald-200 dark:border-emerald-700">
-          <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
-          </svg>
+          <!-- Basic Controls -->
+          <div class="flex items-center space-x-2">
+            <!-- Previous -->
+            <button
+              @click.stop="previousTrack"
+              :disabled="!canGoPrevious"
+              class="p-1.5 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-200 dark:hover:bg-emerald-900/50 transition-colors disabled:opacity-50"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+              </svg>
+            </button>
+
+            <!-- Play/Pause -->
+            <button
+              @click.stop="togglePlayPause"
+              :disabled="!currentTrack"
+              class="p-2 rounded-full bg-gradient-to-br from-emerald-600 to-teal-600 text-white hover:from-emerald-700 hover:to-teal-700 transition-all duration-200 disabled:opacity-50 shadow-md"
+            >
+              <svg v-if="isPlaying" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+              </svg>
+              <svg v-else class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </button>
+
+            <!-- Next -->
+            <button
+              @click.stop="nextTrack"
+              :disabled="!canGoNext"
+              class="p-1.5 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-200 dark:hover:bg-emerald-900/50 transition-colors disabled:opacity-50"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+              </svg>
+            </button>
+
+            <!-- Expand Button -->
+            <button
+              @click.stop="toggleExpanded"
+              class="p-1.5 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-200 dark:hover:bg-emerald-900/50 transition-colors"
+              title="Expand player"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"/>
+              </svg>
+            </button>
+          </div>
         </div>
-        <button
-          @click="togglePlayPause"
-          :disabled="!currentTrack"
-          class="w-8 h-8 bg-gradient-to-br from-emerald-600 to-teal-600 text-white rounded-full flex items-center justify-center hover:from-emerald-700 hover:to-teal-700 transition-all duration-200 disabled:opacity-50 shadow-md"
-        >
-          <svg v-if="isPlaying" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-          </svg>
-          <svg v-else class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z"/>
-          </svg>
-        </button>
+
+        <!-- Progress Bar (collapsed) - Click to expand -->
+        <div v-if="currentTrack" class="mt-2">
+          <div 
+            class="w-full bg-emerald-200 dark:bg-emerald-800 rounded-full h-1 cursor-pointer hover:h-2 transition-all duration-200"
+            @click.stop="toggleExpanded"
+          >
+            <div 
+              class="bg-gradient-to-r from-emerald-600 to-teal-600 h-full rounded-full transition-all duration-300"
+              :style="{ width: `${progress}%` }"
+            ></div>
+          </div>
+        </div>
       </div>
 
-      <!-- Expanded State -->
+      <!-- Expanded State - Full Player -->
       <div v-else class="p-4">
         <!-- Player Header -->
         <div class="flex items-center justify-between mb-4">
@@ -58,6 +110,17 @@
               </p>
             </div>
           </div>
+          
+          <!-- Collapse Button -->
+          <button
+            @click.stop="toggleExpanded"
+            class="p-2 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-200 dark:hover:bg-emerald-900/50 transition-colors"
+            title="Collapse player"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7-7m0 0l-7 7m7-7v18"/>
+            </svg>
+          </button>
         </div>
 
         <!-- Reciter Selector -->
@@ -66,7 +129,7 @@
             <Button
               variant="outline"
               size="sm"
-              @click="showReciterSelect = !showReciterSelect"
+              @click.stop="showReciterSelect = !showReciterSelect"
               class="w-full justify-between text-xs"
             >
               <span>{{ currentReciterData?.englishName || 'Select Reciter' }}</span>
@@ -84,7 +147,7 @@
                 <button
                   v-for="reciter in availableReciters"
                   :key="reciter.identifier"
-                  @click="selectReciter(reciter)"
+                  @click.stop="selectReciter(reciter)"
                   class="block w-full text-left px-3 py-2 text-xs text-emerald-800 dark:text-emerald-200 hover:bg-emerald-100 dark:hover:bg-emerald-900/20 transition-colors rounded-lg mx-1"
                   :class="{ 'bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-300 dark:border-emerald-600': currentReciterData?.identifier === reciter.identifier }"
                 >
@@ -105,19 +168,19 @@
           <div 
             ref="progressBar"
             class="w-full bg-emerald-200 dark:bg-emerald-800 rounded-full h-2 cursor-pointer"
-            @click="seek"
+            @click.stop="seek"
           >
             <div 
               class="bg-gradient-to-r from-emerald-600 to-teal-600 h-2 rounded-full transition-all duration-300 shadow-sm"
               :style="{ width: `${progress}%` }"
             ></div>
             <!-- Loading indicator -->
-        <div 
-          v-if="loading"
-          class="absolute inset-0 bg-emerald-300 dark:bg-emerald-800 rounded-full animate-pulse"
-        ></div>
-      </div>
-    </div>
+            <div 
+              v-if="loading"
+              class="absolute inset-0 bg-emerald-300 dark:bg-emerald-800 rounded-full animate-pulse"
+            ></div>
+          </div>
+        </div>
 
     <!-- Controls -->
     <div class="flex items-center justify-center space-x-4">
@@ -125,7 +188,7 @@
       <Button
         variant="ghost"
         size="sm"
-        @click="previousTrack"
+        @click.stop="previousTrack"
         :disabled="!canGoPrevious"
         title="Previous verse"
       >
@@ -140,7 +203,7 @@
       <Button
         variant="ghost"
         size="sm"
-        @click="backward"
+        @click.stop="backward"
         title="Backward 10 seconds"
       >
         <template #icon-left>
@@ -154,7 +217,7 @@
       <Button
         variant="primary"
         size="lg"
-        @click="togglePlayPause"
+        @click.stop="togglePlayPause"
         :disabled="!currentTrack"
         class="rounded-full w-12 h-12 p-0 bg-gradient-to-br from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 border-2 border-emerald-300 shadow-lg"
       >
@@ -172,7 +235,7 @@
       <Button
         variant="ghost"
         size="sm"
-        @click="forward"
+        @click.stop="forward"
         title="Forward 10 seconds"
       >
         <template #icon-left>
@@ -186,7 +249,7 @@
       <Button
         variant="ghost"
         size="sm"
-        @click="nextTrack"
+        @click.stop="nextTrack"
         :disabled="!canGoNext"
         title="Next verse"
       >
@@ -205,7 +268,7 @@
         <Button
           variant="ghost"
           size="sm"
-          @click="toggleRepeat"
+          @click.stop="toggleRepeat"
           :class="{ 'text-primary-600 dark:text-primary-400': repeatMode !== 'none' }"
           :title="getRepeatTitle()"
         >
@@ -222,7 +285,7 @@
         <Button
           variant="ghost"
           size="sm"
-          @click="toggleShuffle"
+          @click.stop="toggleShuffle"
           :class="{ 'text-primary-600 dark:text-primary-400': shuffleMode }"
           title="Shuffle"
         >
@@ -239,7 +302,7 @@
         <Button
           variant="ghost"
           size="sm"
-          @click="toggleMute"
+          @click.stop="toggleMute"
         >
           <template #icon-left>
             <svg v-if="isMuted || volume === 0" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -260,7 +323,7 @@
           max="1"
           step="0.01"
           :value="isMuted ? 0 : volume"
-          @input="setVolume"
+          @input.stop="setVolume"
           class="w-20 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer"
         >
       </div>
@@ -270,7 +333,7 @@
         <Button
           variant="ghost"
           size="sm"
-          @click="toggleSpeedMenu"
+          @click.stop="toggleSpeedMenu"
         >
           {{ playbackRate }}x
         </Button>
@@ -282,7 +345,7 @@
           <button
             v-for="speed in playbackSpeeds"
             :key="speed"
-            @click="setPlaybackRate(speed)"
+            @click.stop="setPlaybackRate(speed)"
             class="block w-full text-left px-3 py-1 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
             :class="{ 'bg-primary-50 dark:bg-primary-900/20': playbackRate === speed }"
           >
@@ -321,6 +384,7 @@ interface Props {
   tracks?: AudioTrack[]
   currentReciter?: string
   availableReciters?: Edition[]
+  mobileMode?: boolean
 }
 
 interface Emits {
@@ -328,7 +392,9 @@ interface Emits {
   'reciter-change': [reciter: string]
 }
 
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+  mobileMode: false
+})
 const emit = defineEmits<Emits>()
 
 const quranAPI = useQuranAPI()
@@ -348,7 +414,7 @@ const error = ref<string | null>(null)
 const currentTrack = ref<AudioTrack | null>(null)
 
 // UI state
-const isCollapsed = ref(true)
+const isExpanded = ref(false)
 const showReciterSelect = ref(false)
 const showSpeedMenu = ref(false)
 const progressBar = ref<HTMLElement>()
@@ -379,9 +445,9 @@ const canGoNext = computed(() => {
   return currentIndex < props.tracks.length - 1
 })
 
-// Collapse/expand functions
-function toggleCollapse() {
-  isCollapsed.value = !isCollapsed.value
+// Expand/collapse functions
+function toggleExpanded() {
+  isExpanded.value = !isExpanded.value
 }
 
 // Audio controls
@@ -623,22 +689,40 @@ watch(() => props.tracks, (newTracks) => {
   }
 }, { immediate: true })
 
+// Event handlers and cleanup
+let handleClickOutside: ((event: Event) => void) | null = null
+
+onMounted(() => {
+  handleClickOutside = (event: Event) => {
+    const target = event.target as Element
+    
+    // Close dropdowns when clicking outside relative containers
+    if (!target.closest('.relative')) {
+      showReciterSelect.value = false
+      showSpeedMenu.value = false
+    }
+    
+    // Minimize audio player when clicking outside and it's expanded
+    if (isExpanded.value) {
+      const audioPlayerElement = document.querySelector('[data-audio-player]')
+      if (audioPlayerElement && !audioPlayerElement.contains(target)) {
+        isExpanded.value = false
+      }
+    }
+  }
+  
+  document.addEventListener('click', handleClickOutside)
+})
+
 // Cleanup
 onUnmounted(() => {
   if (howl.value) {
     howl.value.unload()
   }
-})
-
-// Close dropdowns on outside click
-onMounted(() => {
-  document.addEventListener('click', (event) => {
-    const target = event.target as Element
-    if (!target.closest('.relative')) {
-      showReciterSelect.value = false
-      showSpeedMenu.value = false
-    }
-  })
+  
+  if (handleClickOutside) {
+    document.removeEventListener('click', handleClickOutside)
+  }
 })
 </script>
 

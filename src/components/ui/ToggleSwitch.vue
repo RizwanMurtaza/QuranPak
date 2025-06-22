@@ -2,24 +2,28 @@
   <button
     @click="toggle"
     :class="[
-      'relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2',
-      modelValue ? 'bg-primary-600' : 'bg-gray-200 dark:bg-gray-700'
+      'relative inline-flex h-8 min-w-20 sm:h-9 sm:min-w-24 px-3 sm:px-4 items-center justify-center rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-1',
+      modelValue ? 'bg-gradient-to-r from-emerald-600 to-teal-600 shadow-md' : 'bg-gray-200 dark:bg-gray-600'
     ]"
     role="switch"
     :aria-checked="modelValue"
   >
-    <span
+    <!-- Text inside switch -->
+    <span 
       :class="[
-        'inline-block h-4 w-4 transform rounded-full bg-white transition-transform',
-        modelValue ? 'translate-x-6' : 'translate-x-1'
+        'text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap',
+        modelValue ? 'text-white' : 'text-gray-500 dark:text-gray-400'
       ]"
-    />
+    >
+      {{ label }}
+    </span>
   </button>
 </template>
 
 <script setup lang="ts">
 interface Props {
   modelValue: boolean
+  label?: string
 }
 
 const props = defineProps<Props>()

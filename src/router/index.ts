@@ -86,7 +86,7 @@ router.beforeEach((to) => {
   // Update meta description
   const description = to.meta.description as string
   if (description) {
-    let metaDescription = document.querySelector('meta[name="description"]')
+    const metaDescription = document.querySelector('meta[name="description"]')
     if (metaDescription) {
       metaDescription.setAttribute('content', description)
     }
@@ -95,7 +95,7 @@ router.beforeEach((to) => {
   // Update meta keywords
   const keywords = to.meta.keywords as string
   if (keywords) {
-    let metaKeywords = document.querySelector('meta[name="keywords"]')
+    const metaKeywords = document.querySelector('meta[name="keywords"]')
     if (metaKeywords) {
       metaKeywords.setAttribute('content', keywords)
     }
@@ -110,7 +110,7 @@ router.beforeEach((to) => {
   }
   
   // Update Open Graph URL
-  let ogUrl = document.querySelector('meta[property="og:url"]')
+  const ogUrl = document.querySelector('meta[property="og:url"]')
   if (ogUrl) {
     const baseUrl = 'https://quranpak.sunnahlife.com'
     const fullPath = to.fullPath === '/' ? '' : to.fullPath

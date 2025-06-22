@@ -9,35 +9,43 @@
     <!-- Compact Verse Header -->
     <div class="flex items-center justify-between mb-3">
       <div class="flex items-center space-x-2">
-        <!-- Verse Number Badge -->
-        <div class="verse-number-badge">
-          <span class="verse-number">{{ verse.verseNumber }}</span>
+        <!-- Elegant Islamic Verse Number -->
+        <div class="verse-number-container">
+          <div class="verse-number-ornament">
+            <!-- Main ornamental frame -->
+            <div class="ornament-frame">
+              <!-- Inner decorative ring -->
+              <div class="inner-ring"></div>
+              <!-- Verse number -->
+              <span class="verse-number-text">{{ verse.verseNumber }}</span>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- Compact Actions -->
-      <div class="flex items-center space-x-1">
+      <div class="flex items-center space-x-2">
         <button
           @click="toggleBookmark"
           :class="[
-            'p-1.5 rounded-lg transition-colors',
+            'p-2 sm:p-1.5 rounded-xl border-2 transition-all duration-200 shadow-sm',
             isBookmarked 
-              ? 'text-gold-600 hover:text-gold-700 bg-gold-50 dark:bg-gold-900/20' 
-              : 'text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20'
+              ? 'text-gold-600 hover:text-gold-700 bg-gold-50 dark:bg-gold-900/20 border-gold-300 dark:border-gold-700' 
+              : 'text-emerald-600 hover:text-emerald-700 bg-emerald-50 dark:bg-emerald-900/20 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 border-emerald-200 dark:border-emerald-700'
           ]"
           :title="isBookmarked ? 'Remove bookmark' : 'Add bookmark'"
         >
-          <svg class="h-4 w-4" :fill="isBookmarked ? 'currentColor' : 'none'" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="h-5 w-5 sm:h-4 sm:w-4" :fill="isBookmarked ? 'currentColor' : 'none'" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
           </svg>
         </button>
 
         <button
           @click="copyVerse"
-          class="p-1.5 rounded-lg text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors"
+          class="p-2 sm:p-1.5 rounded-xl border-2 text-emerald-600 hover:text-emerald-700 bg-emerald-50 dark:bg-emerald-900/20 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 border-emerald-200 dark:border-emerald-700 transition-all duration-200 shadow-sm"
           title="Copy verse"
         >
-          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="h-5 w-5 sm:h-4 sm:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
           </svg>
         </button>
@@ -45,17 +53,17 @@
         <button
           @click="toggleAudio"
           :class="[
-            'p-1.5 rounded-lg transition-colors',
+            'p-2 sm:p-1.5 rounded-xl border-2 transition-all duration-200 shadow-sm',
             isPlayingAudio 
-              ? 'text-emerald-600 bg-emerald-100 dark:bg-emerald-900/30' 
-              : 'text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20'
+              ? 'text-white bg-gradient-to-r from-emerald-600 to-teal-600 border-emerald-500' 
+              : 'text-emerald-600 hover:text-emerald-700 bg-emerald-50 dark:bg-emerald-900/20 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 border-emerald-200 dark:border-emerald-700'
           ]"
           :title="isPlayingAudio ? 'Pause audio' : 'Play audio'"
         >
-          <svg v-if="!isPlayingAudio" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+          <svg v-if="!isPlayingAudio" class="h-5 w-5 sm:h-4 sm:w-4" fill="currentColor" viewBox="0 0 24 24">
             <path d="M8 5v14l11-7z" />
           </svg>
-          <svg v-else class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+          <svg v-else class="h-5 w-5 sm:h-4 sm:w-4" fill="currentColor" viewBox="0 0 24 24">
             <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
           </svg>
         </button>
@@ -354,12 +362,92 @@ onUnmounted(() => {
   scroll-margin-top: 100px; /* For smooth scrolling to highlighted verses */
 }
 
-.verse-number-badge {
-  @apply relative w-8 h-8 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center shadow-sm;
+/* Elegant Islamic Verse Number Styling */
+.verse-number-container {
+  @apply relative;
 }
 
-.verse-number {
-  @apply text-white font-bold text-xs;
+.verse-number-ornament {
+  @apply relative w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center;
+}
+
+.ornament-frame {
+  @apply relative w-full h-full flex items-center justify-center;
+  background: linear-gradient(135deg, #10b981, #0d9488, #059669);
+  border-radius: 50%;
+  box-shadow: 
+    0 4px 12px rgba(16, 185, 129, 0.4),
+    0 1px 3px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.ornament-frame::before {
+  content: '';
+  @apply absolute inset-0;
+  background: conic-gradient(from 0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
+  border-radius: 50%;
+}
+
+.ornament-frame::after {
+  content: '';
+  @apply absolute inset-1;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.inner-ring {
+  @apply absolute inset-2;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.verse-number-text {
+  @apply relative z-20 text-white font-bold text-sm sm:text-base;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  letter-spacing: 0.025em;
+}
+
+/* Islamic Pattern Background */
+.ornament-frame {
+  position: relative;
+}
+
+.ornament-frame::before {
+  content: '';
+  @apply absolute inset-0;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  border-radius: 50%;
+}
+
+/* Hover Effects */
+.verse-number-container:hover .ornament-frame {
+  transform: scale(1.05) rotate(2deg);
+  box-shadow: 
+    0 6px 16px rgba(16, 185, 129, 0.5),
+    0 2px 6px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.verse-number-container:hover .verse-number-text {
+  transform: scale(1.05);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Active state */
+.verse-number-container:active .ornament-frame {
+  transform: scale(0.95);
+  transition: all 0.1s ease-in-out;
 }
 
 .arabic-text {

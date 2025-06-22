@@ -1,6 +1,18 @@
 <template>
-  <!-- Floating Navigation Toggle Button -->
-  <div class="fixed left-4 top-1/2 transform -translate-y-1/2 z-50">
+  <!-- Mobile Mode - Compact button -->
+  <button
+    v-if="mobileMode"
+    @click="toggleNavigation"
+    class="flex items-center space-x-1 px-2 py-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-lg shadow-md transition-all duration-200"
+  >
+    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+    </svg>
+    <span class="text-xs font-medium">Surahs</span>
+  </button>
+
+  <!-- Desktop Mode - Floating Navigation Toggle Button (Hidden on mobile) -->
+  <div v-else class="hidden sm:block fixed left-4 top-1/2 transform -translate-y-1/2 z-40">
     <button
       @click="toggleNavigation"
       class="group bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 border-2 border-emerald-300"
@@ -28,7 +40,7 @@
   >
     <div
       v-if="isOpen"
-      class="fixed left-0 top-0 bottom-0 w-80 max-w-80 bg-gradient-to-b from-emerald-50 to-teal-50 dark:from-gray-900 dark:to-gray-800 border-r-2 border-emerald-200 dark:border-emerald-700 shadow-2xl z-40 overflow-hidden flex flex-col h-screen"
+      class="fixed left-0 top-0 bottom-0 w-full sm:w-80 sm:max-w-80 bg-gradient-to-b from-emerald-50 to-teal-50 dark:from-gray-900 dark:to-gray-800 border-r-2 border-emerald-200 dark:border-emerald-700 shadow-2xl z-40 overflow-hidden flex flex-col h-screen"
     >
       <!-- Navigation Header -->
       <div class="flex items-center justify-between h-20 px-6 border-b-2 border-emerald-200 dark:border-emerald-700 bg-gradient-to-r from-emerald-100 to-teal-100 dark:from-gray-800 dark:to-gray-700">
@@ -206,6 +218,14 @@ import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useQuranStore } from '@/stores/quran'
 import { useUserStore } from '@/stores/user'
+
+interface Props {
+  mobileMode?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  mobileMode: false
+})
 
 const route = useRoute()
 const quranStore = useQuranStore()

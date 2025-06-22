@@ -1,7 +1,7 @@
 <template>
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <!-- Floating Surah Navigation -->
-    <SurahNavigation />
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-20 sm:pb-8">
+    <!-- Floating Surah Navigation - Desktop only -->
+    <SurahNavigation class="hidden sm:block" />
     <!-- Loading State -->
     <div v-if="loading" class="text-center py-12">
       <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
@@ -24,6 +24,18 @@
 
     <!-- Main Content -->
     <div v-else-if="currentSurah">
+      <!-- Mobile Navigation - Top on mobile -->
+      <div class="sm:hidden mb-4">
+        <div class="flex items-center justify-between p-3 bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-gray-800 dark:to-gray-700 rounded-xl shadow-lg border border-emerald-200 dark:border-gray-600">
+          <SurahNavigation mobile-mode />
+          <div class="flex items-center space-x-2 text-xs text-emerald-700 dark:text-emerald-300">
+            <span>{{ currentSurah?.numberOfAyahs }} Ayahs</span>
+            <div class="w-1 h-1 bg-emerald-500 rounded-full"></div>
+            <span>{{ currentSurah?.revelationType }}</span>
+          </div>
+        </div>
+      </div>
+
       <!-- Compact Islamic Surah Header -->
       <div class="surah-header relative overflow-hidden py-4 px-4 mb-4">
         <div class="absolute inset-0 islamic-pattern opacity-20"></div>
@@ -61,91 +73,64 @@
       </div>
 
       <!-- Elegant Islamic Controls -->
-      <div class="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-gray-800 dark:to-gray-700 rounded-xl shadow-lg border border-emerald-200 dark:border-gray-600 p-6 mb-8">
-        <div class="flex flex-wrap items-center justify-between gap-6">
-          <!-- Display Options -->
-          <div class="flex items-center space-x-6">
-            <label class="flex items-center space-x-3 text-sm font-medium cursor-pointer group">
-              <input
-                v-model="showWordByWord"
-                type="checkbox"
-                class="rounded border-emerald-300 text-emerald-600 focus:ring-emerald-500 focus:ring-2 transition-all"
-              >
-              <span class="text-emerald-700 dark:text-emerald-300 group-hover:text-emerald-800 dark:group-hover:text-emerald-200 transition-colors">
-                Word-by-Word
-              </span>
-            </label>
-            
-            <label class="flex items-center space-x-3 text-sm font-medium cursor-pointer group">
-              <input
-                v-model="showTransliteration"
-                type="checkbox"
-                class="rounded border-emerald-300 text-emerald-600 focus:ring-emerald-500 focus:ring-2 transition-all"
-              >
-              <span class="text-emerald-700 dark:text-emerald-300 group-hover:text-emerald-800 dark:group-hover:text-emerald-200 transition-colors">
-                Transliteration
-              </span>
-            </label>
-            
-            <label class="flex items-center space-x-3 text-sm font-medium cursor-pointer group">
-              <input
-                v-model="showTranslation"
-                type="checkbox"
-                class="rounded border-emerald-300 text-emerald-600 focus:ring-emerald-500 focus:ring-2 transition-all"
-              >
-              <span class="text-emerald-700 dark:text-emerald-300 group-hover:text-emerald-800 dark:group-hover:text-emerald-200 transition-colors">
-                Translation
-              </span>
-            </label>
-          </div>
-          
-          <!-- Action Buttons -->
-          <div class="flex items-center space-x-3">
+      <div class="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-gray-800 dark:to-gray-700 rounded-xl shadow-lg border border-emerald-200 dark:border-gray-600 p-3 sm:p-6 mb-8">
+        <!-- Display Toggle Switches - Always in one row -->
+        <div class="flex items-center justify-center gap-2 sm:gap-4 mb-4">
+          <ToggleSwitch v-model="showWordByWord" label="Words" />
+          <ToggleSwitch v-model="showTransliteration" label="Roman" />
+          <ToggleSwitch v-model="showTranslation" label="Translation" />
+        </div>
+        
+        <!-- Action Buttons - Always in one row -->
+        <div class="flex items-center justify-center gap-2 sm:gap-3">
             <Button
               @click="showTranslationSelector = true"
               variant="outline"
               size="sm"
-              class="border-emerald-300 text-emerald-700 hover:bg-emerald-100 dark:border-emerald-600 dark:text-emerald-300 dark:hover:bg-emerald-900/20"
+              class="border-emerald-300 text-emerald-700 hover:bg-emerald-100 dark:border-emerald-600 dark:text-emerald-300 dark:hover:bg-emerald-900/20 text-xs sm:text-sm"
             >
-              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
               </svg>
-              Translations ({{ selectedTranslations.length }})
+              <span class="hidden sm:inline">Translations</span>
+              <span class="sm:hidden">Trans</span> ({{ selectedTranslations.length }})
             </Button>
             
             <Button
               @click="showReciterSelector = true"
               variant="outline"
               size="sm"
-              class="border-emerald-300 text-emerald-700 hover:bg-emerald-100 dark:border-emerald-600 dark:text-emerald-300 dark:hover:bg-emerald-900/20"
+              class="border-emerald-300 text-emerald-700 hover:bg-emerald-100 dark:border-emerald-600 dark:text-emerald-300 dark:hover:bg-emerald-900/20 text-xs sm:text-sm"
             >
-              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 14.142m-5.758-2.828l-2.828-2.828-2.828 2.828"></path>
               </svg>
-              {{ getVerseReciterName() }}
+              <span class="hidden sm:inline">{{ getVerseReciterName() }}</span>
+              <span class="sm:hidden">Reciter</span>
             </Button>
             
             <Button
               @click="showTypographySelector = true"
               variant="outline"
               size="sm"
-              class="border-emerald-300 text-emerald-700 hover:bg-emerald-100 dark:border-emerald-600 dark:text-emerald-300 dark:hover:bg-emerald-900/20"
+              class="border-emerald-300 text-emerald-700 hover:bg-emerald-100 dark:border-emerald-600 dark:text-emerald-300 dark:hover:bg-emerald-900/20 text-xs sm:text-sm"
             >
-              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
               </svg>
               Font
             </Button>
             
+            <!-- Audio Player - Hidden on mobile, shown on desktop -->
             <AudioPlayer
               v-if="currentSurahVerses.length > 0"
+              class="hidden sm:block"
               :tracks="audioTracks"
               :current-reciter="selectedReciter"
               :available-reciters="availableReciters"
               @reciter-change="handleReciterChange"
               @track-changed="handleTrackChanged"
             />
-          </div>
         </div>
       </div>
 
@@ -162,7 +147,7 @@
           :show-translation="showTranslation"
           :show-metadata="true"
           :is-bookmarked="isBookmarked(verse.surahNumber, verse.verseNumber)"
-          :surah-name="currentSurah.englishName"
+          :surah-name="currentSurah?.englishName || ''"
           :is-playing="currentPlayingVerse === verse.verseNumber"
           :arabic-font="selectedTypography"
           :verse-reciter="selectedVerseReciter"
@@ -176,105 +161,101 @@
       </div>
     </div>
 
-    <!-- Simple Translation Selector Modal -->
+
+    <!-- Mobile Audio Player - Bottom-centered, separate from navigation -->
+    <div class="sm:hidden">
+      <AudioPlayer
+        v-if="currentSurahVerses.length > 0"
+        :tracks="audioTracks"
+        :current-reciter="selectedReciter"
+        :available-reciters="availableReciters"
+        @reciter-change="handleReciterChange"
+        @track-changed="handleTrackChanged"
+        mobile-mode
+      />
+    </div>
+
+    <!-- Compact Translation Selector Modal -->
     <Teleport to="body">
       <Modal 
         v-model="showTranslationSelector" 
-        title="Select Translation"
+        title="Select Translations"
         size="sm"
         @close="showTranslationSelector = false"
       >
-        <div class="space-y-4">
-          <!-- Step 1: Select Language -->
-          <div>
-            <label class="block text-sm font-medium text-emerald-900 dark:text-emerald-100 mb-2">
-              Choose Language
-            </label>
-            <select 
-              v-model="selectedLanguage"
-              @change="updateTranslatorsForLanguage"
-              class="w-full px-3 py-2 border border-emerald-300 dark:border-emerald-700 rounded-lg bg-white dark:bg-gray-800 text-emerald-900 dark:text-emerald-100 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+        <div class="space-y-3">
+          <!-- Quick Language Tabs -->
+          <div class="flex flex-wrap gap-1">
+            <button
+              v-for="lang in availableLanguages.slice(0, 6)"
+              :key="lang.code"
+              @click="selectLanguageQuick(lang.code)"
+              :class="[
+                'px-2 py-1 text-xs rounded-md transition-colors border',
+                selectedLanguage === lang.code 
+                  ? 'bg-emerald-100 dark:bg-emerald-900/30 border-emerald-300 dark:border-emerald-600 text-emerald-800 dark:text-emerald-200'
+                  : 'bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700'
+              ]"
             >
-              <option value="">-- Select Language --</option>
-              <option v-for="lang in availableLanguages" :key="lang.code" :value="lang.code">
-                {{ lang.name }} {{ lang.native }}
-              </option>
-            </select>
+              {{ lang.native }}
+            </button>
           </div>
           
-          <!-- Step 2: Select Translators (Multiple) -->
-          <div v-if="selectedLanguage">
-            <label class="block text-sm font-medium text-emerald-900 dark:text-emerald-100 mb-2">
-              Choose Translators ({{ selectedTranslators.length }} selected)
-            </label>
-            <div class="space-y-2 max-h-48 overflow-y-auto border border-emerald-200 dark:border-emerald-700 rounded-lg p-2">
-              <div 
+          <!-- Compact Translators List -->
+          <div v-if="selectedLanguage" class="max-h-60 overflow-y-auto">
+            <div class="text-xs font-medium text-emerald-800 dark:text-emerald-200 mb-2">
+              {{ getLanguageName(selectedLanguage) }} Translations
+            </div>
+            <div class="space-y-1">
+              <label 
                 v-for="translator in availableTranslatorsForLanguage" 
                 :key="translator.identifier"
-                class="flex items-center space-x-3 p-2 rounded-lg hover:bg-emerald-50 dark:hover:bg-emerald-900/20 cursor-pointer transition-colors"
+                class="flex items-center space-x-2 p-2 rounded-lg hover:bg-emerald-50 dark:hover:bg-emerald-900/20 cursor-pointer transition-colors text-sm"
                 :class="{ 'bg-emerald-50 dark:bg-emerald-900/20': selectedTranslators.includes(translator.identifier) }"
-                @click="toggleTranslator(translator.identifier)"
               >
                 <input
-                  :id="translator.identifier"
                   type="checkbox"
                   :value="translator.identifier"
                   :checked="selectedTranslators.includes(translator.identifier)"
-                  @click.stop
                   @change="toggleTranslator(translator.identifier)"
-                  class="h-4 w-4 text-emerald-600 focus:ring-emerald-500 border-emerald-300 rounded"
+                  class="h-3 w-3 text-emerald-600 focus:ring-emerald-500 border-emerald-300 rounded"
                 >
-                <label :for="translator.identifier" class="flex-1 cursor-pointer">
-                  <div class="font-medium text-emerald-900 dark:text-emerald-100">
+                <div class="flex-1 min-w-0">
+                  <div class="font-medium text-emerald-900 dark:text-emerald-100 truncate text-sm">
                     {{ translator.englishName }}
                   </div>
-                  <div v-if="translator.author" class="text-xs text-emerald-700 dark:text-emerald-300">
+                  <div v-if="translator.author" class="text-xs text-emerald-600 dark:text-emerald-400 truncate">
                     {{ translator.author }}
                   </div>
-                </label>
-              </div>
+                </div>
+              </label>
             </div>
           </div>
           
-          <!-- Preview -->
-          <div v-if="selectedTranslators.length > 0" class="p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg border border-emerald-200 dark:border-emerald-700">
-            <div class="text-xs font-medium text-emerald-800 dark:text-emerald-200 mb-2">
-              Preview ({{ selectedTranslators.length }} translation{{ selectedTranslators.length > 1 ? 's' : '' }})
+          <!-- Compact Action buttons -->
+          <div class="flex justify-between items-center pt-2 border-t border-emerald-200 dark:border-emerald-700">
+            <div class="text-xs text-emerald-600 dark:text-emerald-400">
+              {{ selectedTranslators.length }} selected
             </div>
-            <div class="space-y-2 max-h-32 overflow-y-auto">
-              <div v-for="translatorId in selectedTranslators.slice(0, 3)" :key="translatorId" class="border-b border-emerald-200 dark:border-emerald-700 pb-1 last:border-b-0">
-                <div class="text-xs font-medium text-emerald-700 dark:text-emerald-300 mb-0.5">
-                  {{ getTranslatorName(translatorId) }}
-                </div>
-                <div class="text-xs text-emerald-600 dark:text-emerald-400 leading-relaxed" :class="getPreviewDirection(translatorId)">
-                  {{ getPreviewText(translatorId) }}
-                </div>
-              </div>
-              <div v-if="selectedTranslators.length > 3" class="text-xs text-emerald-600 dark:text-emerald-400 italic">
-                +{{ selectedTranslators.length - 3 }} more translations selected
-              </div>
+            <div class="flex space-x-2">
+              <Button 
+                variant="outline" 
+                size="sm"
+                @click="showTranslationSelector = false"
+                class="text-xs px-3 py-1"
+              >
+                Cancel
+              </Button>
+              <Button 
+                variant="primary" 
+                size="sm"
+                @click="applySelectedTranslations"
+                :disabled="selectedTranslators.length === 0"
+                class="text-xs px-3 py-1"
+              >
+                Apply
+              </Button>
             </div>
-          </div>
-          
-          <!-- Action buttons -->
-          <div class="flex justify-end space-x-2 pt-2">
-            <Button 
-              variant="outline" 
-              size="sm"
-              @click="showTranslationSelector = false"
-              class="border-emerald-300 text-emerald-700 hover:bg-emerald-100 dark:border-emerald-600 dark:text-emerald-300 dark:hover:bg-emerald-900/20"
-            >
-              Cancel
-            </Button>
-            <Button 
-              variant="primary" 
-              size="sm"
-              @click="applySelectedTranslations"
-              :disabled="selectedTranslators.length === 0"
-              class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 disabled:from-gray-400 disabled:to-gray-500"
-            >
-              Apply ({{ selectedTranslators.length }})
-            </Button>
           </div>
         </div>
       </Modal>
@@ -321,8 +302,8 @@
                 <div class="text-sm text-emerald-700 dark:text-emerald-300">
                   {{ reciter.name }}
                 </div>
-                <div v-if="reciter.style" class="text-xs text-emerald-600 dark:text-emerald-400">
-                  {{ reciter.style }}
+                <div class="text-xs text-emerald-600 dark:text-emerald-400">
+                  Audio Recitation
                 </div>
               </label>
             </div>
@@ -385,8 +366,8 @@
               >
                 بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
               </div>
-              <div v-if="font.description" class="text-xs text-center text-emerald-600 dark:text-emerald-400 mt-1">
-                {{ font.description }}
+              <div class="text-xs text-center text-emerald-600 dark:text-emerald-400 mt-1">
+                {{ font.name }} Font Style
               </div>
             </div>
           </div>
@@ -420,8 +401,10 @@ import { useQuranStore } from '@/stores/quran'
 import { useUserStore } from '@/stores/user'
 import { useSettingsStore } from '@/stores/settings'
 import type { Verse, Word } from '@/stores/quran'
+import type { Edition } from '@/types/api'
 import Button from '@/components/ui/Button.vue'
 import Modal from '@/components/ui/Modal.vue'
+import ToggleSwitch from '@/components/ui/ToggleSwitch.vue'
 import VerseCard from '@/components/quran/VerseCard.vue'
 import TranslationSelector from '@/components/quran/TranslationSelector.vue'
 import AudioPlayer from '@/components/quran/AudioPlayer.vue'
@@ -462,29 +445,29 @@ const currentSurahVerses = computed(() => quranStore.currentSurahVerses)
 const selectedTranslations = computed(() => quranStore.selectedTranslations)
 const selectedReciter = computed(() => quranStore.selectedReciter)
 const availableTranslations = computed(() => quranStore.availableTranslations)
-const availableReciters = computed(() => {
+const availableReciters = computed((): Edition[] => {
   // Actual working reciter identifiers from Al-Quran Cloud API
   return [
-    { identifier: 'ar.alafasy', englishName: 'Mishary Alafasy', name: 'مشاري العفاسي', style: 'Hafs' },
-    { identifier: 'ar.abdulbasitmurattal', englishName: 'Abdul Basit (Murattal)', name: 'عبد الباسط المرتل', style: 'Murattal' },
-    { identifier: 'ar.abdullahbasfar', englishName: 'Abdullah Basfar', name: 'عبد الله بصفر', style: 'Hafs' },
-    { identifier: 'ar.abdurrahmaansudais', englishName: 'Abdur-Rahman as-Sudais', name: 'عبد الرحمن السديس', style: 'Hafs' },
-    { identifier: 'ar.abdulsamad', englishName: 'Abdul Samad', name: 'عبدالباسط عبدالصمد', style: 'Hafs' },
-    { identifier: 'ar.shaatree', englishName: 'Abu Bakr Ash-Shaatree', name: 'أبو بكر الشاطري', style: 'Hafs' },
-    { identifier: 'ar.ahmedajamy', englishName: 'Ahmed ibn Ali al-Ajamy', name: 'أحمد بن علي العجمي', style: 'Hafs' },
-    { identifier: 'ar.hanirifai', englishName: 'Hani Rifai', name: 'هاني الرفاعي', style: 'Hafs' },
-    { identifier: 'ar.husary', englishName: 'Mahmoud Khalil Al-Hussary', name: 'محمود خليل الحصري', style: 'Hafs' },
-    { identifier: 'ar.husarymujawwad', englishName: 'Al-Hussary (Mujawwad)', name: 'محمود خليل الحصري (المجود)', style: 'Mujawwad' },
-    { identifier: 'ar.hudhaify', englishName: 'Ali Hudhaify', name: 'علي بن عبدالرحمن الحذيفي', style: 'Hafs' },
-    { identifier: 'ar.ibrahimakhbar', englishName: 'Ibrahim Akhdar', name: 'إبراهيم الأخضر', style: 'Hafs' },
-    { identifier: 'ar.mahermuaiqly', englishName: 'Maher Al Muaiqly', name: 'ماهر المعيقلي', style: 'Hafs' },
-    { identifier: 'ar.minshawi', englishName: 'Mohamed Siddiq El-Minshawi', name: 'محمد صديق المنشاوي', style: 'Hafs' },
-    { identifier: 'ar.minshawimujawwad', englishName: 'Minshawi (Mujawwad)', name: 'محمد صديق المنشاوي (المجود)', style: 'Mujawwad' },
-    { identifier: 'ar.muhammadayyoub', englishName: 'Muhammad Ayyoub', name: 'محمد أيوب', style: 'Hafs' },
-    { identifier: 'ar.muhammadjibreel', englishName: 'Muhammad Jibreel', name: 'محمد جبريل', style: 'Hafs' },
-    { identifier: 'ar.saoodshuraym', englishName: 'Saood Ash-Shuraym', name: 'سعود الشريم', style: 'Hafs' },
-    { identifier: 'ar.parhizgar', englishName: 'Parhizgar', name: 'شهریار پرهیزگار', style: 'Hafs' },
-    { identifier: 'ar.aymanswoaid', englishName: 'Ayman Sowaid', name: 'أيمن سويد', style: 'Hafs' }
+    { identifier: 'ar.alafasy', englishName: 'Mishary Alafasy', name: 'مشاري العفاسي', language: 'ar', format: 'audio' as const, type: 'versebyverse' as const },
+    { identifier: 'ar.abdulbasitmurattal', englishName: 'Abdul Basit (Murattal)', name: 'عبد الباسط المرتل', language: 'ar', format: 'audio' as const, type: 'versebyverse' as const },
+    { identifier: 'ar.abdullahbasfar', englishName: 'Abdullah Basfar', name: 'عبد الله بصفر', language: 'ar', format: 'audio' as const, type: 'versebyverse' as const },
+    { identifier: 'ar.abdurrahmaansudais', englishName: 'Abdur-Rahman as-Sudais', name: 'عبد الرحمن السديس', language: 'ar', format: 'audio' as const, type: 'versebyverse' as const },
+    { identifier: 'ar.abdulsamad', englishName: 'Abdul Samad', name: 'عبدالباسط عبدالصمد', language: 'ar', format: 'audio' as const, type: 'versebyverse' as const },
+    { identifier: 'ar.shaatree', englishName: 'Abu Bakr Ash-Shaatree', name: 'أبو بكر الشاطري', language: 'ar', format: 'audio' as const, type: 'versebyverse' as const },
+    { identifier: 'ar.ahmedajamy', englishName: 'Ahmed ibn Ali al-Ajamy', name: 'أحمد بن علي العجمي', language: 'ar', format: 'audio' as const, type: 'versebyverse' as const },
+    { identifier: 'ar.hanirifai', englishName: 'Hani Rifai', name: 'هاني الرفاعي', language: 'ar', format: 'audio' as const, type: 'versebyverse' as const },
+    { identifier: 'ar.husary', englishName: 'Mahmoud Khalil Al-Hussary', name: 'محمود خليل الحصري', language: 'ar', format: 'audio' as const, type: 'versebyverse' as const },
+    { identifier: 'ar.husarymujawwad', englishName: 'Al-Hussary (Mujawwad)', name: 'محمود خليل الحصري (المجود)', language: 'ar', format: 'audio' as const, type: 'versebyverse' as const },
+    { identifier: 'ar.hudhaify', englishName: 'Ali Hudhaify', name: 'علي بن عبدالرحمن الحذيفي', language: 'ar', format: 'audio' as const, type: 'versebyverse' as const },
+    { identifier: 'ar.ibrahimakhbar', englishName: 'Ibrahim Akhdar', name: 'إبراهيم الأخضر', language: 'ar', format: 'audio' as const, type: 'versebyverse' as const },
+    { identifier: 'ar.mahermuaiqly', englishName: 'Maher Al Muaiqly', name: 'ماهر المعيقلي', language: 'ar', format: 'audio' as const, type: 'versebyverse' as const },
+    { identifier: 'ar.minshawi', englishName: 'Mohamed Siddiq El-Minshawi', name: 'محمد صديق المنشاوي', language: 'ar', format: 'audio' as const, type: 'versebyverse' as const },
+    { identifier: 'ar.minshawimujawwad', englishName: 'Minshawi (Mujawwad)', name: 'محمد صديق المنشاوي (المجود)', language: 'ar', format: 'audio' as const, type: 'versebyverse' as const },
+    { identifier: 'ar.muhammadayyoub', englishName: 'Muhammad Ayyoub', name: 'محمد أيوب', language: 'ar', format: 'audio' as const, type: 'versebyverse' as const },
+    { identifier: 'ar.muhammadjibreel', englishName: 'Muhammad Jibreel', name: 'محمد جبريل', language: 'ar', format: 'audio' as const, type: 'versebyverse' as const },
+    { identifier: 'ar.saoodshuraym', englishName: 'Saood Ash-Shuraym', name: 'سعود الشريم', language: 'ar', format: 'audio' as const, type: 'versebyverse' as const },
+    { identifier: 'ar.parhizgar', englishName: 'Parhizgar', name: 'شهریار پرهیزگار', language: 'ar', format: 'audio' as const, type: 'versebyverse' as const },
+    { identifier: 'ar.aymanswoaid', englishName: 'Ayman Sowaid', name: 'أيمن سويد', language: 'ar', format: 'audio' as const, type: 'versebyverse' as const }
   ]
 })
 
@@ -496,8 +479,7 @@ const filteredReciters = computed(() => {
   const query = reciterSearchQuery.value.toLowerCase()
   return availableReciters.value.filter(reciter => 
     reciter.englishName.toLowerCase().includes(query) ||
-    reciter.name.includes(query) ||
-    reciter.style.toLowerCase().includes(query)
+    reciter.name.includes(query)
   )
 })
 
@@ -820,4 +802,26 @@ onMounted(() => {
   // Load saved Arabic font preference
   selectedTypography.value = settingsStore.arabicFont
 })
+
+// New helper functions for compact translation selector
+function selectLanguageQuick(langCode: string) {
+  selectedLanguage.value = langCode
+  updateTranslatorsForLanguage()
+}
+
+function getLanguageName(langCode: string): string {
+  const langMap: Record<string, string> = {
+    'en': 'English',
+    'ur': 'Urdu',
+    'ar': 'Arabic', 
+    'fr': 'French',
+    'es': 'Spanish',
+    'de': 'German',
+    'id': 'Indonesian',
+    'tr': 'Turkish',
+    'fa': 'Persian',
+    'bn': 'Bengali'
+  }
+  return langMap[langCode] || langCode
+}
 </script>
