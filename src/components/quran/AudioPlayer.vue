@@ -8,20 +8,34 @@
       mobileMode ? 'bottom-2' : 'bottom-4'
     ]"
   >
-    <div class="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl shadow-2xl border-2 border-emerald-200 dark:border-emerald-700 backdrop-blur-sm overflow-hidden">
+    <div class="relative bg-gradient-to-br from-calligraphy-100 via-islamic-cream to-calligraphy-50 dark:from-islamic-charcoal dark:via-islamic-midnight dark:to-calligraphy-900 rounded-2xl shadow-luxury border-2 border-gold-300/40 dark:border-gold-600/40 backdrop-blur-sm overflow-hidden group">
+      <!-- Background Pattern -->
+      <div class="absolute inset-0 bg-geometric-pattern opacity-5 group-hover:opacity-10 transition-opacity duration-500"></div>
+      
+      <!-- Islamic Border Decoration -->
+      <div class="absolute inset-0 rounded-2xl border border-gold-400/20 animate-pulse-gold"></div>
+      
+      <!-- Corner Ornaments -->
+      <div class="absolute top-1 left-1 w-3 h-3 border-t border-l border-gold-400/50 rounded-tl-2xl"></div>
+      <div class="absolute top-1 right-1 w-3 h-3 border-t border-r border-gold-400/50 rounded-tr-2xl"></div>
+      <div class="absolute bottom-1 left-1 w-3 h-3 border-b border-l border-gold-400/50 rounded-bl-2xl"></div>
+      <div class="absolute bottom-1 right-1 w-3 h-3 border-b border-r border-gold-400/50 rounded-br-2xl"></div>
+      
+      <!-- Content Wrapper -->
+      <div class="relative z-10">
       
       <!-- Collapsed State - Compact Player -->
       <div v-if="!isExpanded" class="p-3">
         <div class="flex items-center space-x-3">
           <!-- Track Info - Clickable to expand -->
           <div 
-            class="flex-1 min-w-0 cursor-pointer hover:bg-emerald-100 dark:hover:bg-emerald-900/20 rounded-lg p-1 transition-colors"
+            class="flex-1 min-w-0 cursor-pointer hover:bg-calligraphy-100 dark:hover:bg-calligraphy-900/20 rounded-lg p-1 transition-colors"
             @click.stop="toggleExpanded"
           >
-            <p class="text-xs font-medium text-emerald-900 dark:text-emerald-100 truncate">
+            <p class="text-xs font-medium text-islamic-charcoal dark:text-islamic-cream truncate">
               {{ currentTrack?.title || 'Quran Audio Player' }}
             </p>
-            <p class="text-xs text-emerald-700 dark:text-emerald-300">
+            <p class="text-xs text-calligraphy-700 dark:text-calligraphy-300">
               {{ currentReciterData?.englishName || 'Select Reciter' }}
             </p>
           </div>
@@ -32,7 +46,7 @@
             <button
               @click.stop="previousTrack"
               :disabled="!canGoPrevious"
-              class="p-1.5 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-200 dark:hover:bg-emerald-900/50 transition-colors disabled:opacity-50"
+              class="p-1.5 rounded-lg bg-calligraphy-100 dark:bg-calligraphy-900/30 text-calligraphy-600 dark:text-calligraphy-400 hover:bg-calligraphy-200 dark:hover:bg-calligraphy-900/50 transition-colors disabled:opacity-50"
             >
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
@@ -43,7 +57,7 @@
             <button
               @click.stop="togglePlayPause"
               :disabled="!currentTrack"
-              class="p-2 rounded-full bg-gradient-to-br from-emerald-600 to-teal-600 text-white hover:from-emerald-700 hover:to-teal-700 transition-all duration-200 disabled:opacity-50 shadow-md"
+              class="p-2 rounded-full bg-gradient-to-br from-calligraphy-600 to-cream-600 text-white hover:from-calligraphy-700 hover:to-cream-700 transition-all duration-200 disabled:opacity-50 shadow-md"
             >
               <svg v-if="isPlaying" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
@@ -57,7 +71,7 @@
             <button
               @click.stop="nextTrack"
               :disabled="!canGoNext"
-              class="p-1.5 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-200 dark:hover:bg-emerald-900/50 transition-colors disabled:opacity-50"
+              class="p-1.5 rounded-lg bg-calligraphy-100 dark:bg-calligraphy-900/30 text-calligraphy-600 dark:text-calligraphy-400 hover:bg-calligraphy-200 dark:hover:bg-calligraphy-900/50 transition-colors disabled:opacity-50"
             >
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
@@ -67,7 +81,7 @@
             <!-- Expand Button -->
             <button
               @click.stop="toggleExpanded"
-              class="p-1.5 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-200 dark:hover:bg-emerald-900/50 transition-colors"
+              class="p-1.5 rounded-lg bg-calligraphy-100 dark:bg-calligraphy-900/30 text-calligraphy-600 dark:text-calligraphy-400 hover:bg-calligraphy-200 dark:hover:bg-calligraphy-900/50 transition-colors"
               title="Expand player"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -80,11 +94,11 @@
         <!-- Progress Bar (collapsed) - Click to expand -->
         <div v-if="currentTrack" class="mt-2">
           <div 
-            class="w-full bg-emerald-200 dark:bg-emerald-800 rounded-full h-1 cursor-pointer hover:h-2 transition-all duration-200"
+            class="w-full bg-calligraphy-200 dark:bg-calligraphy-800 rounded-full h-1 cursor-pointer hover:h-2 transition-all duration-200"
             @click.stop="toggleExpanded"
           >
             <div 
-              class="bg-gradient-to-r from-emerald-600 to-teal-600 h-full rounded-full transition-all duration-300"
+              class="bg-gradient-to-r from-calligraphy-600 to-cream-600 h-full rounded-full transition-all duration-300"
               :style="{ width: `${progress}%` }"
             ></div>
           </div>
@@ -96,16 +110,16 @@
         <!-- Player Header -->
         <div class="flex items-center justify-between mb-4">
           <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center border border-emerald-200 dark:border-emerald-700">
-              <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+            <div class="w-10 h-10 bg-calligraphy-100 dark:bg-calligraphy-900/30 rounded-full flex items-center justify-center border border-calligraphy-200 dark:border-calligraphy-700">
+              <svg class="w-5 h-5 text-calligraphy-600 dark:text-calligraphy-400" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
               </svg>
             </div>
             <div>
-              <h3 class="font-semibold text-emerald-900 dark:text-emerald-100 text-sm">
+              <h3 class="font-semibold text-calligraphy-900 dark:text-calligraphy-100 text-sm">
                 {{ currentTrack?.title || 'Quran Audio' }}
               </h3>
-              <p class="text-xs text-emerald-700 dark:text-emerald-300">
+              <p class="text-xs text-calligraphy-700 dark:text-calligraphy-300">
                 {{ currentReciterData?.englishName || 'Select Reciter' }}
               </p>
             </div>
@@ -114,7 +128,7 @@
           <!-- Collapse Button -->
           <button
             @click.stop="toggleExpanded"
-            class="p-2 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-200 dark:hover:bg-emerald-900/50 transition-colors"
+            class="p-2 rounded-lg bg-calligraphy-100 dark:bg-calligraphy-900/30 text-calligraphy-600 dark:text-calligraphy-400 hover:bg-calligraphy-200 dark:hover:bg-calligraphy-900/50 transition-colors"
             title="Collapse player"
           >
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -141,18 +155,18 @@
             <!-- Reciter Dropdown -->
             <div
               v-if="showReciterSelect"
-              class="absolute top-full left-0 right-0 mt-1 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-gray-800 dark:to-gray-700 rounded-xl shadow-xl border-2 border-emerald-200 dark:border-emerald-700 z-10"
+              class="absolute top-full left-0 right-0 mt-1 bg-gradient-to-br from-calligraphy-50 to-cream-50 dark:from-gray-800 dark:to-gray-700 rounded-xl shadow-xl border-2 border-calligraphy-200 dark:border-calligraphy-700 z-10"
             >
               <div class="py-1 max-h-48 overflow-y-auto">
                 <button
                   v-for="reciter in availableReciters"
                   :key="reciter.identifier"
                   @click.stop="selectReciter(reciter)"
-                  class="block w-full text-left px-3 py-2 text-xs text-emerald-800 dark:text-emerald-200 hover:bg-emerald-100 dark:hover:bg-emerald-900/20 transition-colors rounded-lg mx-1"
-                  :class="{ 'bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-300 dark:border-emerald-600': currentReciterData?.identifier === reciter.identifier }"
+                  class="block w-full text-left px-3 py-2 text-xs text-calligraphy-800 dark:text-calligraphy-200 hover:bg-calligraphy-100 dark:hover:bg-calligraphy-900/20 transition-colors rounded-lg mx-1"
+                  :class="{ 'bg-calligraphy-100 dark:bg-calligraphy-900/30 border border-calligraphy-300 dark:border-calligraphy-600': currentReciterData?.identifier === reciter.identifier }"
                 >
                   <div class="font-medium">{{ reciter.englishName }}</div>
-                  <div class="text-xs text-emerald-600 dark:text-emerald-400 truncate font-arabic">{{ reciter.name }}</div>
+                  <div class="text-xs text-calligraphy-600 dark:text-calligraphy-400 truncate font-arabic">{{ reciter.name }}</div>
                 </button>
               </div>
             </div>
@@ -161,23 +175,23 @@
 
         <!-- Progress Bar -->
         <div class="mb-4">
-          <div class="flex items-center justify-between text-xs text-emerald-700 dark:text-emerald-300 mb-2">
+          <div class="flex items-center justify-between text-xs text-calligraphy-700 dark:text-calligraphy-300 mb-2">
             <span>{{ formatTime(currentTime) }}</span>
             <span>{{ formatTime(duration) }}</span>
           </div>
           <div 
             ref="progressBar"
-            class="w-full bg-emerald-200 dark:bg-emerald-800 rounded-full h-2 cursor-pointer"
+            class="w-full bg-calligraphy-200 dark:bg-calligraphy-800 rounded-full h-2 cursor-pointer"
             @click.stop="seek"
           >
             <div 
-              class="bg-gradient-to-r from-emerald-600 to-teal-600 h-2 rounded-full transition-all duration-300 shadow-sm"
+              class="bg-gradient-to-r from-calligraphy-600 to-cream-600 h-2 rounded-full transition-all duration-300 shadow-sm"
               :style="{ width: `${progress}%` }"
             ></div>
             <!-- Loading indicator -->
             <div 
               v-if="loading"
-              class="absolute inset-0 bg-emerald-300 dark:bg-emerald-800 rounded-full animate-pulse"
+              class="absolute inset-0 bg-calligraphy-300 dark:bg-calligraphy-800 rounded-full animate-pulse"
             ></div>
           </div>
         </div>
@@ -219,7 +233,7 @@
         size="lg"
         @click.stop="togglePlayPause"
         :disabled="!currentTrack"
-        class="rounded-full w-12 h-12 p-0 bg-gradient-to-br from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 border-2 border-emerald-300 shadow-lg"
+        class="rounded-full w-12 h-12 p-0 bg-gradient-to-br from-calligraphy-600 to-cream-600 hover:from-calligraphy-700 hover:to-cream-700 border-2 border-calligraphy-300 shadow-lg"
       >
         <template #icon-left>
           <svg v-if="isPlaying" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -360,6 +374,7 @@
           <p class="text-sm text-red-600 dark:text-red-400">{{ error }}</p>
         </div>
       </div>
+      </div> <!-- End content wrapper -->
     </div>
   </div>
 </template>

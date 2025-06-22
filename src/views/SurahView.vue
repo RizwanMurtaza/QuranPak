@@ -1,5 +1,12 @@
 <template>
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-20 sm:pb-8">
+  <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-20 sm:pb-8 min-h-screen">
+    <!-- Enhanced Background with Multiple Patterns -->
+    <div class="fixed inset-0 bg-gradient-to-br from-islamic-ivory via-calligraphy-50 to-islamic-cream dark:from-islamic-midnight dark:via-islamic-charcoal dark:to-islamic-midnight"></div>
+    <div class="fixed inset-0 bg-calligraphy-texture opacity-30 dark:opacity-20"></div>
+    <div class="fixed inset-0 bg-arabesque-pattern opacity-10 dark:opacity-5"></div>
+    
+    <!-- Content Container -->
+    <div class="relative z-10">
     <!-- Floating Surah Navigation - Desktop only -->
     <SurahNavigation class="hidden sm:block" />
     <!-- Loading State -->
@@ -26,54 +33,101 @@
     <div v-else-if="currentSurah">
       <!-- Mobile Navigation - Top on mobile -->
       <div class="sm:hidden mb-4">
-        <div class="flex items-center justify-between p-3 bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-gray-800 dark:to-gray-700 rounded-xl shadow-lg border border-emerald-200 dark:border-gray-600">
+        <div class="flex items-center justify-between p-3 bg-gradient-to-r from-calligraphy-100 to-islamic-cream dark:from-islamic-charcoal dark:to-islamic-midnight rounded-2xl shadow-luxury border border-calligraphy-300 dark:border-calligraphy-700">
           <SurahNavigation mobile-mode />
-          <div class="flex items-center space-x-2 text-xs text-emerald-700 dark:text-emerald-300">
+          <div class="flex items-center space-x-2 text-xs text-calligraphy-700 dark:text-calligraphy-300">
             <span>{{ currentSurah?.numberOfAyahs }} Ayahs</span>
-            <div class="w-1 h-1 bg-emerald-500 rounded-full"></div>
+            <div class="w-1 h-1 bg-gold-500 rounded-full"></div>
             <span>{{ currentSurah?.revelationType }}</span>
           </div>
         </div>
       </div>
 
-      <!-- Compact Islamic Surah Header -->
-      <div class="surah-header relative overflow-hidden py-4 px-4 mb-4">
-        <div class="absolute inset-0 islamic-pattern opacity-20"></div>
+      <!-- Majestic Islamic Surah Header -->
+      <div class="surah-header relative overflow-hidden py-8 px-8 mb-8 bg-gradient-to-br from-calligraphy-200 via-islamic-cream to-gold-100 dark:from-islamic-charcoal dark:via-islamic-midnight dark:to-calligraphy-900 rounded-3xl border-2 border-gold-300/40 dark:border-gold-600/40 shadow-luxury group">
+        <!-- Multi-layered Background Patterns -->
+        <div class="absolute inset-0 bg-arabesque-pattern opacity-15 dark:opacity-10"></div>
+        <div class="absolute inset-0 bg-geometric-pattern opacity-10 group-hover:opacity-20 transition-opacity duration-700"></div>
+        <div class="absolute inset-0 bg-calligraphy-texture opacity-20 dark:opacity-15"></div>
         
-        <div class="relative z-10 flex items-center justify-between">
-          <!-- Left: Surah Number and Names -->
-          <div class="flex items-center space-x-4">
-            <div class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-emerald-600 via-teal-600 to-emerald-700 rounded-xl shadow-lg">
-              <span class="text-lg font-bold text-white">{{ currentSurah.number }}</span>
+        <!-- Elegant Border Decoration -->
+        <div class="absolute inset-0 border-2 border-gold-400/30 rounded-3xl animate-pulse-gold"></div>
+        
+        <!-- Corner Islamic Ornaments -->
+        <div class="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-gold-400/60 rounded-tl-3xl"></div>
+        <div class="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-gold-400/60 rounded-tr-3xl"></div>
+        <div class="absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 border-gold-400/60 rounded-bl-3xl"></div>
+        <div class="absolute bottom-3 right-3 w-6 h-6 border-b-2 border-r-2 border-gold-400/60 rounded-br-3xl"></div>
+        
+        <div class="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
+          <!-- Enhanced Surah Information -->
+          <div class="flex items-center space-x-6">
+            <!-- Magnificent Surah Number -->
+            <div class="relative flex items-center justify-center w-20 h-20 bg-gradient-to-br from-islamic-brown via-gold-600 to-islamic-burgundy rounded-3xl shadow-luxury border-2 border-gold-400/50 animate-breathe">
+              <!-- Rotating ornamental background -->
+              <div class="absolute inset-0 bg-geometric-pattern opacity-30 rounded-3xl animate-rotate-slow"></div>
+              <!-- Inner glow -->
+              <div class="absolute inset-2 bg-gradient-to-br from-gold-300/20 via-transparent to-islamic-bronze/20 rounded-2xl"></div>
+              <!-- Surah number -->
+              <span class="relative text-2xl font-bold text-islamic-cream drop-shadow-lg">{{ currentSurah.number }}</span>
+              <!-- Decorative ring -->
+              <div class="absolute inset-0 border-2 border-gold-400/40 rounded-3xl animate-pulse-gold"></div>
+              
+              <!-- Corner decorations -->
+              <div class="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-gold-300 rounded-tl-3xl"></div>
+              <div class="absolute -top-1 -right-1 w-4 h-4 border-t-2 border-r-2 border-gold-300 rounded-tr-3xl"></div>
+              <div class="absolute -bottom-1 -left-1 w-4 h-4 border-b-2 border-l-2 border-gold-300 rounded-bl-3xl"></div>
+              <div class="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-gold-300 rounded-br-3xl"></div>
             </div>
             
-            <div>
-              <h1 class="text-xl font-bold text-emerald-900 dark:text-emerald-100">
-                {{ currentSurah.englishName }}
-                <span class="text-lg font-arabic text-emerald-700 dark:text-emerald-300 ml-2">{{ currentSurah.name }}</span>
-              </h1>
-              <p class="text-sm text-emerald-700 dark:text-emerald-300">
-                {{ currentSurah.englishNameTranslation }}
-              </p>
+            <!-- Surah Names and Translation -->
+            <div class="space-y-2">
+              <!-- English and Arabic Names -->
+              <div class="space-y-1">
+                <h1 class="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-islamic-charcoal via-calligraphy-800 to-islamic-charcoal dark:from-islamic-cream dark:via-gold-200 dark:to-islamic-cream bg-clip-text text-transparent font-display">
+                  {{ currentSurah.englishName }}
+                </h1>
+                <h2 class="text-2xl lg:text-3xl font-arabic text-calligraphy-700 dark:text-calligraphy-300 leading-relaxed">
+                  {{ currentSurah.name }}
+                </h2>
+              </div>
+              
+              <!-- Translation with decorative elements -->
+              <div class="flex items-center space-x-3">
+                <div class="w-2 h-2 bg-gold-500 rounded-full animate-pulse"></div>
+                <p class="text-sm lg:text-base text-calligraphy-600 dark:text-calligraphy-400 font-serif italic">
+                  "{{ currentSurah.englishNameTranslation }}"
+                </p>
+                <div class="w-2 h-2 bg-gold-500 rounded-full animate-pulse"></div>
+              </div>
             </div>
           </div>
           
-          <!-- Right: Surah Info -->
-          <div class="flex items-center space-x-4 text-sm">
-            <div class="flex items-center space-x-1 bg-white/80 dark:bg-gray-800/80 px-3 py-1.5 rounded-full shadow-sm">
-              <div class="w-1.5 h-1.5 bg-gold-500 rounded-full"></div>
-              <span class="font-medium text-emerald-800 dark:text-emerald-200">{{ currentSurah.numberOfAyahs }} Ayahs</span>
+          <!-- Enhanced Surah Metadata -->
+          <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 text-sm lg:text-base">
+            <!-- Ayah Count -->
+            <div class="flex items-center space-x-3 bg-gradient-to-r from-calligraphy-100 to-islamic-cream dark:from-islamic-charcoal dark:to-calligraphy-800 px-4 py-3 rounded-2xl shadow-sm border border-gold-300/40 dark:border-gold-600/40">
+              <div class="w-3 h-3 bg-gold-500 rounded-full animate-pulse"></div>
+              <span class="font-medium text-islamic-charcoal dark:text-islamic-cream">{{ currentSurah.numberOfAyahs }}</span>
+              <span class="text-calligraphy-600 dark:text-calligraphy-400">Ayahs</span>
             </div>
-            <div class="flex items-center space-x-1 bg-white/80 dark:bg-gray-800/80 px-3 py-1.5 rounded-full shadow-sm">
-              <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
-              <span class="font-medium capitalize text-emerald-800 dark:text-emerald-200">{{ currentSurah.revelationType }}</span>
+            
+            <!-- Revelation Type -->
+            <div class="flex items-center space-x-3 bg-gradient-to-r from-calligraphy-100 to-islamic-cream dark:from-islamic-charcoal dark:to-calligraphy-800 px-4 py-3 rounded-2xl shadow-sm border border-gold-300/40 dark:border-gold-600/40">
+              <div class="w-3 h-3 bg-islamic-sage rounded-full animate-pulse"></div>
+              <span class="font-medium capitalize text-islamic-charcoal dark:text-islamic-cream">{{ currentSurah.revelationType }}</span>
+            </div>
+            
+            <!-- Additional decorative element -->
+            <div class="hidden lg:flex items-center justify-center w-8 h-8 bg-gradient-to-br from-islamic-bronze to-islamic-burgundy rounded-full shadow-md">
+              <div class="text-gold-200 text-xs font-arabic">✦</div>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Elegant Islamic Controls -->
-      <div class="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-gray-800 dark:to-gray-700 rounded-xl shadow-lg border border-emerald-200 dark:border-gray-600 p-3 sm:p-6 mb-8">
+      <div class="bg-gradient-to-r from-calligraphy-100 to-islamic-cream dark:from-islamic-charcoal dark:to-islamic-midnight rounded-2xl shadow-luxury border border-calligraphy-300 dark:border-calligraphy-600 p-4 sm:p-6 mb-8">
         <!-- Display Toggle Switches - Always in one row -->
         <div class="flex items-center justify-center gap-2 sm:gap-4 mb-4">
           <ToggleSwitch v-model="showWordByWord" label="Words" />
@@ -87,7 +141,7 @@
               @click="showTranslationSelector = true"
               variant="outline"
               size="sm"
-              class="border-emerald-300 text-emerald-700 hover:bg-emerald-100 dark:border-emerald-600 dark:text-emerald-300 dark:hover:bg-emerald-900/20 text-xs sm:text-sm"
+              class="border-calligraphy-300 text-calligraphy-700 hover:bg-calligraphy-100 dark:border-calligraphy-600 dark:text-calligraphy-300 dark:hover:bg-calligraphy-900/20 text-xs sm:text-sm"
             >
               <svg class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
@@ -100,7 +154,7 @@
               @click="showReciterSelector = true"
               variant="outline"
               size="sm"
-              class="border-emerald-300 text-emerald-700 hover:bg-emerald-100 dark:border-emerald-600 dark:text-emerald-300 dark:hover:bg-emerald-900/20 text-xs sm:text-sm"
+              class="border-calligraphy-300 text-calligraphy-700 hover:bg-calligraphy-100 dark:border-calligraphy-600 dark:text-calligraphy-300 dark:hover:bg-calligraphy-900/20 text-xs sm:text-sm"
             >
               <svg class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 14.142m-5.758-2.828l-2.828-2.828-2.828 2.828"></path>
@@ -113,7 +167,7 @@
               @click="showTypographySelector = true"
               variant="outline"
               size="sm"
-              class="border-emerald-300 text-emerald-700 hover:bg-emerald-100 dark:border-emerald-600 dark:text-emerald-300 dark:hover:bg-emerald-900/20 text-xs sm:text-sm"
+              class="border-calligraphy-300 text-calligraphy-700 hover:bg-calligraphy-100 dark:border-calligraphy-600 dark:text-calligraphy-300 dark:hover:bg-calligraphy-900/20 text-xs sm:text-sm"
             >
               <svg class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -193,7 +247,7 @@
               :class="[
                 'px-2 py-1 text-xs rounded-md transition-colors border',
                 selectedLanguage === lang.code 
-                  ? 'bg-emerald-100 dark:bg-emerald-900/30 border-emerald-300 dark:border-emerald-600 text-emerald-800 dark:text-emerald-200'
+                  ? 'bg-calligraphy-100 dark:bg-calligraphy-900/30 border-calligraphy-300 dark:border-calligraphy-600 text-calligraphy-800 dark:text-calligraphy-200'
                   : 'bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700'
               ]"
             >
@@ -203,28 +257,28 @@
           
           <!-- Compact Translators List -->
           <div v-if="selectedLanguage" class="max-h-60 overflow-y-auto">
-            <div class="text-xs font-medium text-emerald-800 dark:text-emerald-200 mb-2">
+            <div class="text-xs font-medium text-calligraphy-800 dark:text-calligraphy-200 mb-2">
               {{ getLanguageName(selectedLanguage) }} Translations
             </div>
             <div class="space-y-1">
               <label 
                 v-for="translator in availableTranslatorsForLanguage" 
                 :key="translator.identifier"
-                class="flex items-center space-x-2 p-2 rounded-lg hover:bg-emerald-50 dark:hover:bg-emerald-900/20 cursor-pointer transition-colors text-sm"
-                :class="{ 'bg-emerald-50 dark:bg-emerald-900/20': selectedTranslators.includes(translator.identifier) }"
+                class="flex items-center space-x-2 p-2 rounded-lg hover:bg-calligraphy-50 dark:hover:bg-calligraphy-900/20 cursor-pointer transition-colors text-sm"
+                :class="{ 'bg-calligraphy-50 dark:bg-calligraphy-900/20': selectedTranslators.includes(translator.identifier) }"
               >
                 <input
                   type="checkbox"
                   :value="translator.identifier"
                   :checked="selectedTranslators.includes(translator.identifier)"
                   @change="toggleTranslator(translator.identifier)"
-                  class="h-3 w-3 text-emerald-600 focus:ring-emerald-500 border-emerald-300 rounded"
+                  class="h-3 w-3 text-calligraphy-600 focus:ring-calligraphy-500 border-calligraphy-300 rounded"
                 >
                 <div class="flex-1 min-w-0">
-                  <div class="font-medium text-emerald-900 dark:text-emerald-100 truncate text-sm">
+                  <div class="font-medium text-calligraphy-900 dark:text-calligraphy-100 truncate text-sm">
                     {{ translator.englishName }}
                   </div>
-                  <div v-if="translator.author" class="text-xs text-emerald-600 dark:text-emerald-400 truncate">
+                  <div v-if="translator.author" class="text-xs text-calligraphy-600 dark:text-calligraphy-400 truncate">
                     {{ translator.author }}
                   </div>
                 </div>
@@ -233,8 +287,8 @@
           </div>
           
           <!-- Compact Action buttons -->
-          <div class="flex justify-between items-center pt-2 border-t border-emerald-200 dark:border-emerald-700">
-            <div class="text-xs text-emerald-600 dark:text-emerald-400">
+          <div class="flex justify-between items-center pt-2 border-t border-calligraphy-200 dark:border-calligraphy-700">
+            <div class="text-xs text-calligraphy-600 dark:text-calligraphy-400">
               {{ selectedTranslators.length }} selected
             </div>
             <div class="flex space-x-2">
@@ -276,7 +330,7 @@
               v-model="reciterSearchQuery"
               type="text" 
               placeholder="Search reciters..."
-              class="w-full px-3 py-2 border border-emerald-300 dark:border-emerald-700 rounded-lg bg-white dark:bg-gray-800 text-emerald-900 dark:text-emerald-100 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+              class="w-full px-3 py-2 border border-calligraphy-300 dark:border-calligraphy-700 rounded-lg bg-white dark:bg-gray-800 text-calligraphy-900 dark:text-calligraphy-100 focus:ring-2 focus:ring-calligraphy-500 focus:border-calligraphy-500"
             >
           </div>
           
@@ -284,8 +338,8 @@
             <div 
               v-for="reciter in filteredReciters" 
               :key="reciter.identifier"
-              class="flex items-center space-x-3 p-3 rounded-lg hover:bg-emerald-50 dark:hover:bg-emerald-900/20 cursor-pointer transition-colors border border-transparent"
-              :class="{ 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-300 dark:border-emerald-700': selectedVerseReciter === reciter.identifier }"
+              class="flex items-center space-x-3 p-3 rounded-lg hover:bg-calligraphy-50 dark:hover:bg-calligraphy-900/20 cursor-pointer transition-colors border border-transparent"
+              :class="{ 'bg-calligraphy-50 dark:bg-calligraphy-900/20 border-calligraphy-300 dark:border-calligraphy-700': selectedVerseReciter === reciter.identifier }"
               @click="selectedVerseReciter = reciter.identifier"
             >
               <input
@@ -293,34 +347,34 @@
                 type="radio"
                 :value="reciter.identifier"
                 :checked="selectedVerseReciter === reciter.identifier"
-                class="h-4 w-4 text-emerald-600 focus:ring-emerald-500 border-emerald-300"
+                class="h-4 w-4 text-calligraphy-600 focus:ring-calligraphy-500 border-calligraphy-300"
               >
               <label :for="reciter.identifier" class="flex-1 cursor-pointer">
-                <div class="font-medium text-emerald-900 dark:text-emerald-100">
+                <div class="font-medium text-calligraphy-900 dark:text-calligraphy-100">
                   {{ reciter.englishName }}
                 </div>
-                <div class="text-sm text-emerald-700 dark:text-emerald-300">
+                <div class="text-sm text-calligraphy-700 dark:text-calligraphy-300">
                   {{ reciter.name }}
                 </div>
-                <div class="text-xs text-emerald-600 dark:text-emerald-400">
+                <div class="text-xs text-calligraphy-600 dark:text-calligraphy-400">
                   Audio Recitation
                 </div>
               </label>
             </div>
           </div>
           
-          <div class="flex justify-end space-x-2 pt-4 border-t border-emerald-200 dark:border-emerald-800">
+          <div class="flex justify-end space-x-2 pt-4 border-t border-calligraphy-200 dark:border-calligraphy-800">
             <Button 
               variant="outline" 
               @click="showReciterSelector = false"
-              class="border-emerald-300 text-emerald-700 hover:bg-emerald-100 dark:border-emerald-600 dark:text-emerald-300 dark:hover:bg-emerald-900/20"
+              class="border-calligraphy-300 text-calligraphy-700 hover:bg-calligraphy-100 dark:border-calligraphy-600 dark:text-calligraphy-300 dark:hover:bg-calligraphy-900/20"
             >
               Cancel
             </Button>
             <Button 
               variant="primary" 
               @click="applyReciterSelection"
-              class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700"
+              class="bg-gradient-to-r from-calligraphy-600 to-cream-600 hover:from-calligraphy-700 hover:to-cream-700"
             >
               Apply
             </Button>
@@ -342,8 +396,8 @@
             <div 
               v-for="font in arabicFonts" 
               :key="font.id"
-              class="p-4 rounded-lg hover:bg-emerald-50 dark:hover:bg-emerald-900/20 cursor-pointer transition-colors border border-emerald-200 dark:border-emerald-800"
-              :class="{ 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-400 dark:border-emerald-600': selectedTypography === font.id }"
+              class="p-4 rounded-lg hover:bg-calligraphy-50 dark:hover:bg-calligraphy-900/20 cursor-pointer transition-colors border border-calligraphy-200 dark:border-calligraphy-800"
+              :class="{ 'bg-calligraphy-50 dark:bg-calligraphy-900/20 border-calligraphy-400 dark:border-calligraphy-600': selectedTypography === font.id }"
               @click="selectTypography(font.id)"
             >
               <div class="flex items-center justify-between mb-2">
@@ -353,37 +407,37 @@
                     type="radio"
                     :value="font.id"
                     :checked="selectedTypography === font.id"
-                    class="h-4 w-4 text-emerald-600 focus:ring-emerald-500 border-emerald-300"
+                    class="h-4 w-4 text-calligraphy-600 focus:ring-calligraphy-500 border-calligraphy-300"
                   >
-                  <label :for="font.id" class="font-medium text-emerald-900 dark:text-emerald-100 cursor-pointer">
+                  <label :for="font.id" class="font-medium text-calligraphy-900 dark:text-calligraphy-100 cursor-pointer">
                     {{ font.name }}
                   </label>
                 </div>
               </div>
               <div 
-                class="text-2xl text-center py-3 text-emerald-800 dark:text-emerald-200 leading-relaxed"
+                class="text-2xl text-center py-3 text-calligraphy-800 dark:text-calligraphy-200 leading-relaxed"
                 :style="{ fontFamily: font.family }"
               >
                 بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
               </div>
-              <div class="text-xs text-center text-emerald-600 dark:text-emerald-400 mt-1">
+              <div class="text-xs text-center text-calligraphy-600 dark:text-calligraphy-400 mt-1">
                 {{ font.name }} Font Style
               </div>
             </div>
           </div>
           
-          <div class="flex justify-end space-x-2 pt-4 border-t border-emerald-200 dark:border-emerald-800">
+          <div class="flex justify-end space-x-2 pt-4 border-t border-calligraphy-200 dark:border-calligraphy-800">
             <Button 
               variant="outline" 
               @click="showTypographySelector = false"
-              class="border-emerald-300 text-emerald-700 hover:bg-emerald-100 dark:border-emerald-600 dark:text-emerald-300 dark:hover:bg-emerald-900/20"
+              class="border-calligraphy-300 text-calligraphy-700 hover:bg-calligraphy-100 dark:border-calligraphy-600 dark:text-calligraphy-300 dark:hover:bg-calligraphy-900/20"
             >
               Cancel
             </Button>
             <Button 
               variant="primary" 
               @click="applyTypography"
-              class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700"
+              class="bg-gradient-to-r from-calligraphy-600 to-cream-600 hover:from-calligraphy-700 hover:to-cream-700"
             >
               Apply
             </Button>
@@ -391,6 +445,7 @@
         </div>
       </Modal>
     </Teleport>
+    </div> <!-- End content container -->
   </div>
 </template>
 

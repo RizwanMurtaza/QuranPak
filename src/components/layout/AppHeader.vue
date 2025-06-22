@@ -1,16 +1,16 @@
 <template>
-  <header class="bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 shadow-luxury border-b-2 border-emerald-200 dark:border-emerald-700 sticky top-0 z-50 backdrop-blur-md bg-opacity-95" role="banner" aria-label="Main navigation">
+  <header class="bg-gradient-to-r from-calligraphy-50 via-cream-50 to-calligraphy-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 shadow-luxury border-b-2 border-calligraphy-200 dark:border-calligraphy-700 sticky top-0 z-50 backdrop-blur-md bg-opacity-95" role="banner" aria-label="Main navigation">
     <div class="absolute inset-0 bg-islamic-pattern opacity-30"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="flex justify-between items-center h-24">
         <!-- Logo and Brand -->
         <div class="flex items-center space-x-4">
-          <router-link to="/" class="flex items-center space-x-4 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 rounded-lg p-2 transition-all duration-300 hover:scale-105" aria-label="Go to homepage - SunnahLife Quran Reader">
+          <button @click="goToTop" class="flex items-center space-x-4 focus:outline-none focus:ring-2 focus:ring-calligraphy-500 focus:ring-offset-2 rounded-lg p-2 transition-all duration-300 hover:scale-105 cursor-pointer" aria-label="Go to homepage and scroll to top - QuranLight Digital Mushaf">
             <!-- Islamic Bismillah Logo -->
             <div class="flex items-center space-x-4">
               <div class="relative">
                 <!-- Bismillah Circular Design -->
-                <div class="w-20 h-20 bg-gradient-to-br from-emerald-600 via-teal-600 to-emerald-700 rounded-full flex items-center justify-center shadow-islamic border-2 border-emerald-300 transition-all duration-300 hover:shadow-glow-emerald hover:border-emerald-400 animate-float" role="img" aria-label="Bismillah - In the name of Allah">
+                <div class="w-20 h-20 bg-gradient-to-br from-calligraphy-600 via-cream-600 to-calligraphy-700 rounded-full flex items-center justify-center shadow-islamic border-2 border-calligraphy-300 transition-all duration-300 hover:shadow-glow-gold hover:border-calligraphy-400 animate-float" role="img" aria-label="Bismillah - In the name of Allah">
                   <!-- Arabic Bismillah Text -->
                   <div class="text-white bismillah-text-large text-center" aria-hidden="true">
                     بِسْمِ<br>اللّٰهِ
@@ -18,18 +18,18 @@
                 </div>
                 <!-- Decorative Islamic Pattern -->
                 <div class="absolute -top-1 -right-1 w-4 h-4 bg-gold-500 rounded-full opacity-80 animate-pulse"></div>
-                <div class="absolute -bottom-1 -left-1 w-3 h-3 bg-emerald-400 rounded-full opacity-60 animate-pulse" style="animation-delay: 0.5s;"></div>
+                <div class="absolute -bottom-1 -left-1 w-3 h-3 bg-calligraphy-400 rounded-full opacity-60 animate-pulse" style="animation-delay: 0.5s;"></div>
               </div>
               <div class="hidden sm:block">
-                <h1 class="text-fluid-2xl font-extrabold text-emerald-800 dark:text-emerald-200 font-display tracking-wide gradient-text">
-                  SunnahLife
+                <h1 class="text-fluid-2xl font-extrabold text-calligraphy-800 dark:text-calligraphy-200 font-display tracking-wide gradient-text">
+                  QuranLight
                 </h1>
-                <p class="text-fluid-base text-emerald-700 dark:text-emerald-300 font-semibold -mt-1">
-                  Read, Listen and Learn Quran
+                <p class="text-fluid-base text-calligraphy-700 dark:text-calligraphy-300 font-semibold -mt-1">
+                  Let Divine Light Guide Your Journey
                 </p>
               </div>
             </div>
-          </router-link>
+          </button>
         </div>
 
         <!-- Search Bar -->
@@ -46,7 +46,7 @@
               type="text" 
               placeholder="Search Quran..." 
               aria-label="Search Quran verses and chapters"
-              class="block w-full pl-10 pr-3 py-3 border border-emerald-300 dark:border-gray-600 rounded-xl leading-5 bg-white/80 dark:bg-gray-700/80 text-gray-900 dark:text-white placeholder-emerald-600 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent shadow-islamic backdrop-blur-sm transition-all duration-200 hover:shadow-glow-emerald"
+              class="block w-full pl-10 pr-3 py-3 border border-calligraphy-300 dark:border-gray-600 rounded-xl leading-5 bg-white/80 dark:bg-gray-700/80 text-gray-900 dark:text-white placeholder-calligraphy-600 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-calligraphy-500 focus:border-transparent shadow-islamic backdrop-blur-sm transition-all duration-200 hover:shadow-glow-gold"
             >
           </div>
         </div>
@@ -56,7 +56,7 @@
           <!-- Search button for mobile -->
           <button 
             @click="showMobileSearch = !showMobileSearch"
-            class="md:hidden p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 interactive-scale"
+            class="md:hidden p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-calligraphy-500 interactive-scale"
             aria-label="Toggle mobile search"
             :aria-expanded="showMobileSearch"
           >
@@ -68,7 +68,7 @@
           <!-- Dark Mode Toggle -->
           <button 
             @click="toggleTheme"
-            class="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 interactive-scale hover-lift"
+            class="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-calligraphy-500 interactive-scale hover-lift"
             :aria-label="isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'"
             :title="isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'"
           >
@@ -83,14 +83,14 @@
           <!-- Bookmarks -->
           <router-link 
             to="/bookmarks"
-            class="relative p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 interactive-scale hover-lift"
+            class="relative p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-calligraphy-500 interactive-scale hover-lift"
             :aria-label="`Bookmarks${totalBookmarks > 0 ? ` (${totalBookmarks} items)` : ''}`"
             title="View your bookmarks"
           >
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
             </svg>
-            <span v-if="totalBookmarks > 0" class="absolute -top-1 -right-1 bg-islamic-green text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+            <span v-if="totalBookmarks > 0" class="absolute -top-1 -right-1 bg-islamic-burgundy text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
               {{ totalBookmarks > 99 ? '99+' : totalBookmarks }}
             </span>
           </router-link>
@@ -98,7 +98,7 @@
           <!-- Settings -->
           <router-link 
             to="/settings"
-            class="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 interactive-scale hover-lift"
+            class="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-calligraphy-500 interactive-scale hover-lift"
             aria-label="Open settings"
             title="Application settings"
           >
@@ -159,5 +159,18 @@ function performSearch() {
     router.push({ name: 'search', query: { q: searchQuery.value.trim() } })
     showMobileSearch.value = false
   }
+}
+
+function goToTop() {
+  // Navigate to home page if not already there
+  if (router.currentRoute.value.path !== '/') {
+    router.push('/')
+  }
+  
+  // Scroll to top with smooth animation
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
 }
 </script>

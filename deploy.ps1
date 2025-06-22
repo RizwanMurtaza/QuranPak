@@ -17,15 +17,21 @@ param(
 #   ./deploy.ps1 -Action fix-nginx  # Fix Nginx configuration
 #   ./deploy.ps1 -Action fix-dns    # Check and fix DNS issues
 #   ./deploy.ps1 -Action status     # Check deployment status
+#   ./deploy.ps1 -Action second-site # Deploy second website
+#   ./deploy.ps1 -Action verify-sites # Verify both websites are working
 #   ./deploy.ps1 -SkipBuild         # Skip npm build step
 #   ./deploy.ps1 -Force             # Force actions without confirmation
 
 # Configuration
 $SERVER_IP = "172.236.15.248"
-$DOMAIN_NAME = "quran.sunnahlife.co.uk"
+$DOMAIN_NAME = "quranlight.co.uk"
 $SSH_KEY_PATH = "C:\Users\rizwa\.ssh\optimum_linode"
 $REMOTE_APP_DIR = "/var/www/quran-app"
 $ADMIN_EMAIL = "admin@$DOMAIN_NAME"
+
+# Second website configuration
+$SECOND_DOMAIN = "demo.quranlight.co.uk"
+$SECOND_APP_DIR = "/var/www/demo-app"
 
 # Colors
 function Write-ColorHost($Text, $Color) {
@@ -179,7 +185,7 @@ function Setup-Nginx {
     $nginxConfig = @'
 server {
     listen 80;
-    server_name quran.sunnahlife.co.uk;
+    server_name quranlight.co.uk www.quranlight.co.uk;
     root /var/www/quran-app;
     index index.html;
     
@@ -397,7 +403,7 @@ function Check-Status {
     # SSL certificate
     Write-Host ""
     Write-Step "SSL certificate status..."
-    ssh -i "$SSH_KEY_PATH" root@$SERVER_IP "certbot certificates 2>/dev/null | grep -A2 'Certificate Name: quran.sunnahlife.co.uk' || echo 'No SSL certificate found'"
+    ssh -i "$SSH_KEY_PATH" root@$SERVER_IP "certbot certificates 2>/dev/null | grep -A2 'Certificate Name: quranlight.co.uk' || echo 'No SSL certificate found'"
     
     Write-Host ""
     Write-ColorHost "========================================" Green
@@ -427,9 +433,196 @@ function Setup-Server {
     
     # Create web directories
     Write-Info "Creating web directories..."
-    ssh -i "$SSH_KEY_PATH" root@$SERVER_IP "mkdir -p /var/www/quran-app"
+    ssh -i "$SSH_KEY_PATH" root@$SERVER_IP "mkdir -p /var/www/quran-app /var/www/demo-app"
     
     Write-Success "Server prerequisites installed"
+    return $true
+}
+
+function Setup-SecondSite {
+    Write-Step "Setting up second website ($SECOND_DOMAIN)..."
+    
+    # Create directory for second site
+    Write-Info "Creating directory for second site..."
+    ssh -i "$SSH_KEY_PATH" root@$SERVER_IP "mkdir -p $SECOND_APP_DIR"
+    
+    # Create a simple demo HTML page
+    $demoHTML = @'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Site - QuranLight</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #8b4513, #c04000);
+            color: white;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .container {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        h1 { font-size: 3rem; margin-bottom: 1rem; }
+        p { font-size: 1.2rem; margin-bottom: 2rem; }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #b8860b;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        .button:hover { background: #996f0a; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Demo Site</h1>
+        <p>This is a demo website running on the same server as QuranLight</p>
+        <p>Both sites are working correctly!</p>
+        <a href="https://quranlight.co.uk" class="button">Visit Main Site</a>
+    </div>
+</body>
+</html>
+'@
+    
+    # Write demo HTML to server
+    ssh -i "$SSH_KEY_PATH" root@$SERVER_IP "cat > $SECOND_APP_DIR/index.html << 'EOF'
+$demoHTML
+EOF"
+    
+    # Set permissions
+    ssh -i "$SSH_KEY_PATH" root@$SERVER_IP "chown -R www-data:www-data $SECOND_APP_DIR && chmod -R 755 $SECOND_APP_DIR"
+    
+    # Create Nginx config for second site
+    $secondSiteConfig = @'
+server {
+    listen 80;
+    server_name demo.quranlight.co.uk;
+    root /var/www/demo-app;
+    index index.html;
+    
+    # Enable gzip compression
+    gzip on;
+    gzip_vary on;
+    gzip_min_length 1024;
+    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+    
+    # Security headers
+    add_header X-Frame-Options DENY always;
+    add_header X-Content-Type-Options nosniff always;
+    add_header Referrer-Policy strict-origin-when-cross-origin always;
+    
+    location / {
+        try_files $uri $uri/ =404;
+        
+        # Cache static assets
+        location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
+            expires 1y;
+            add_header Cache-Control "public, immutable";
+        }
+    }
+    
+    # Error pages
+    error_page 404 /404.html;
+    error_page 500 502 503 504 /50x.html;
+    
+    # Logs
+    access_log /var/log/nginx/demo_access.log;
+    error_log /var/log/nginx/demo_error.log;
+}
+'@
+    
+    # Write config file
+    ssh -i "$SSH_KEY_PATH" root@$SERVER_IP "cat > /etc/nginx/sites-available/demo << 'EOF'
+$secondSiteConfig
+EOF"
+    
+    # Enable site
+    ssh -i "$SSH_KEY_PATH" root@$SERVER_IP "ln -sf /etc/nginx/sites-available/demo /etc/nginx/sites-enabled/demo"
+    
+    # Test and reload Nginx
+    Write-Info "Testing Nginx configuration..."
+    $nginxTest = ssh -i "$SSH_KEY_PATH" root@$SERVER_IP "nginx -t 2>&1"
+    if ($LASTEXITCODE -ne 0) {
+        Write-Error "Nginx configuration test failed:"
+        Write-Host $nginxTest
+        return $false
+    }
+    
+    Write-Info "Reloading Nginx..."
+    ssh -i "$SSH_KEY_PATH" root@$SERVER_IP "systemctl reload nginx"
+    if ($LASTEXITCODE -ne 0) {
+        Write-Error "Failed to reload Nginx"
+        return $false
+    }
+    
+    Write-Success "Second site setup completed!"
+    Write-Info "Demo site available at: http://$SECOND_DOMAIN"
+    return $true
+}
+
+function Verify-Sites {
+    Write-Step "Verifying both websites..."
+    
+    # Test main site
+    Write-Info "Testing main site ($DOMAIN_NAME)..."
+    try {
+        $response1 = Invoke-WebRequest -Uri "http://$DOMAIN_NAME" -TimeoutSec 10 -UseBasicParsing
+        if ($response1.StatusCode -eq 200) {
+            Write-Success "Main site is responding (HTTP $($response1.StatusCode))"
+        } else {
+            Write-Warning "Main site returned HTTP $($response1.StatusCode)"
+        }
+    } catch {
+        Write-Error "Main site is not accessible: $($_.Exception.Message)"
+    }
+    
+    # Test second site
+    Write-Info "Testing demo site ($SECOND_DOMAIN)..."
+    try {
+        $response2 = Invoke-WebRequest -Uri "http://$SECOND_DOMAIN" -TimeoutSec 10 -UseBasicParsing
+        if ($response2.StatusCode -eq 200) {
+            Write-Success "Demo site is responding (HTTP $($response2.StatusCode))"
+        } else {
+            Write-Warning "Demo site returned HTTP $($response2.StatusCode)"
+        }
+    } catch {
+        Write-Error "Demo site is not accessible: $($_.Exception.Message)"
+    }
+    
+    # Check Nginx status
+    Write-Info "Checking Nginx status..."
+    $nginxStatus = ssh -i "$SSH_KEY_PATH" root@$SERVER_IP "systemctl is-active nginx"
+    if ($nginxStatus -eq "active") {
+        Write-Success "Nginx is running"
+    } else {
+        Write-Error "Nginx is not running properly"
+    }
+    
+    # List enabled sites
+    Write-Info "Enabled Nginx sites:"
+    ssh -i "$SSH_KEY_PATH" root@$SERVER_IP "ls -la /etc/nginx/sites-enabled/"
+    
+    Write-Host ""
+    Write-Info "Test URLs:"
+    Write-Host "  Main site: http://$DOMAIN_NAME"
+    Write-Host "  Demo site: http://$SECOND_DOMAIN"
+    Write-Host "  Server IP: http://$SERVER_IP"
+    
     return $true
 }
 
@@ -515,6 +708,19 @@ function Main {
             Write-Info "You can now run: ./deploy.ps1 -Action deploy"
         }
         
+        "second-site" {
+            if (!(Test-SSHConnection)) { exit 1 }
+            if (!(Setup-SecondSite)) { exit 1 }
+            Write-Success "Second site setup completed!"
+            Write-Info "Demo site is available at: http://$SECOND_DOMAIN"
+        }
+        
+        "verify-sites" {
+            if (!(Test-SSHConnection)) { exit 1 }
+            if (!(Verify-Sites)) { exit 1 }
+            Write-Success "Site verification completed!"
+        }
+        
         default {
             Write-Error "Invalid action: $Action"
             Write-Host ""
@@ -526,6 +732,8 @@ function Main {
             Write-Host "  fix-nginx    - Fix Nginx conflicts"
             Write-Host "  fix-dns      - Check DNS configuration"
             Write-Host "  status       - Check deployment status"
+            Write-Host "  second-site  - Deploy second website (demo.quranlight.co.uk)"
+            Write-Host "  verify-sites - Verify both websites are working"
             exit 1
         }
     }

@@ -60,13 +60,13 @@
 }
 
 .surah-header {
-  background: linear-gradient(135deg, #ecfdf5, #d1fae5);
-  border: 2px solid #10b981;
+  background: linear-gradient(135deg, #fef7ed, #fed7aa);
+  border: 2px solid #d97706;
   border-radius: 1rem;
   padding: 1.5rem 2rem;
   text-align: center;
   margin: 2rem 0;
-  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.15);
+  box-shadow: 0 8px 25px rgba(139, 69, 19, 0.15);
   position: relative;
   overflow: hidden;
 }
@@ -78,14 +78,14 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(139, 69, 19, 0.1) 0%, transparent 70%);
   animation: rotate 20s linear infinite;
 }
 
 .dark .surah-header {
-  background: linear-gradient(135deg, #064e3b, #065f46);
-  border-color: #10b981;
-  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.2);
+  background: linear-gradient(135deg, #78350f, #92400e);
+  border-color: #d97706;
+  box-shadow: 0 8px 25px rgba(139, 69, 19, 0.2);
 }
 
 @keyframes rotate {
@@ -96,8 +96,8 @@
 /* Islamic geometric patterns */
 .islamic-pattern {
   background-image: 
-    radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(20, 184, 166, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 20% 20%, rgba(139, 69, 19, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(192, 64, 0, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 40% 60%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
 }
 
@@ -131,7 +131,7 @@
 }
 
 .word-interactive:focus {
-  @apply outline-none ring-2 ring-emerald-500 ring-offset-2;
+  @apply outline-none ring-2 ring-amber-500 ring-offset-2;
 }
 
 /* Accessibility improvements */
@@ -157,11 +157,11 @@
     background: black !important;
   }
   
-  .text-emerald-800 {
+  .text-amber-800 {
     color: #000 !important;
   }
   
-  .dark .text-emerald-200 {
+  .dark .text-amber-200 {
     color: #fff !important;
   }
 }
@@ -186,7 +186,7 @@ input:focus,
 select:focus,
 textarea:focus,
 a:focus {
-  @apply ring-2 ring-emerald-500 ring-offset-2;
+  @apply ring-2 ring-amber-500 ring-offset-2;
 }
 
 /* Better touch targets for mobile */
@@ -228,7 +228,7 @@ a:focus {
 /* Islamic geometric patterns */
 .islamic-pattern-overlay {
   background-image: 
-    radial-gradient(circle at 25% 25%, rgba(16, 185, 129, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 25% 25%, rgba(139, 69, 19, 0.1) 0%, transparent 40%),
     radial-gradient(circle at 75% 75%, rgba(245, 158, 11, 0.08) 0%, transparent 40%);
   pointer-events: none;
 }
@@ -261,8 +261,8 @@ a:focus {
 .islamic-spinner {
   width: 40px;
   height: 40px;
-  border: 3px solid rgba(16, 185, 129, 0.2);
-  border-top: 3px solid #10b981;
+  border: 3px solid rgba(139, 69, 19, 0.2);
+  border-top: 3px solid #d97706;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -274,7 +274,7 @@ a:focus {
 
 /* Gradient text effect */
 .gradient-text {
-  background: linear-gradient(135deg, #10b981, #14b8a6, #f59e0b);
+  background: linear-gradient(135deg, #d97706, #b45309, #f59e0b);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -306,12 +306,12 @@ a:focus {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #059669, #14b8a6);
+  background: linear-gradient(to bottom, #b45309, #b45309);
   border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #047857, #0f766e);
+  background: linear-gradient(to bottom, #92400e, #b45309);
 }
 
 .dark .custom-scrollbar::-webkit-scrollbar-track {
@@ -319,9 +319,9 @@ a:focus {
 }
 
 .dark .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #10b981, #14b8a6);
+  background: linear-gradient(to bottom, #d97706, #b45309);
 }
 
 .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #059669, #0d9488);
+  background: linear-gradient(to bottom, #b45309, #92400e);
 }

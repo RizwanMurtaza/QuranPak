@@ -7,10 +7,10 @@
   >
     <!-- Arabic Word -->
     <div 
-      class="arabic-word text-center px-1.5 py-1 rounded-md transition-all duration-200 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 text-lg font-medium"
+      class="arabic-word text-center px-1.5 py-1 rounded-md transition-all duration-200 hover:bg-calligraphy-50 dark:hover:bg-calligraphy-900/20 text-lg font-medium"
       :class="{ 
-        'bg-emerald-100 dark:bg-emerald-900/40': isSelected,
-        'text-emerald-800 dark:text-emerald-200': isHighlighted
+        'bg-calligraphy-100 dark:bg-calligraphy-900/40': isSelected,
+        'text-calligraphy-800 dark:text-calligraphy-200': isHighlighted
       }"
     >
       {{ word.arabic }}
@@ -62,7 +62,7 @@
     <div class="word-meanings text-center mt-1.5 space-y-0.5 min-w-0 max-w-20">
       <!-- Transliteration -->
       <div v-if="showTransliteration && word.transliteration" 
-           class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold leading-tight break-words bg-emerald-50 dark:bg-emerald-900/20 px-1 py-0.5 rounded">
+           class="text-xs text-calligraphy-600 dark:text-calligraphy-400 font-semibold leading-tight break-words bg-calligraphy-50 dark:bg-calligraphy-900/20 px-1 py-0.5 rounded">
         {{ word.transliteration }}
       </div>
       

@@ -31,11 +31,11 @@ onMounted(() => {
 <template>
   <div class="space-y-8">
     <!-- Compact Hero Section -->
-    <section class="relative bg-gradient-to-br from-emerald-50 via-teal-50 to-emerald-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
+    <section class="relative bg-gradient-to-br from-calligraphy-50 via-cream-50 to-calligraphy-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto text-center">
         <!-- Islamic Pattern Background -->
         <div class="absolute inset-0 opacity-5">
-          <svg class="w-full h-full text-emerald-600" viewBox="0 0 400 400" fill="currentColor">
+          <svg class="w-full h-full text-calligraphy-600" viewBox="0 0 400 400" fill="currentColor">
             <defs>
               <pattern id="islamic-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
                 <circle cx="20" cy="20" r="2"/>
@@ -48,20 +48,20 @@ onMounted(() => {
         </div>
 
         <div class="relative">
-          <h1 class="text-4xl md:text-5xl font-bold text-emerald-900 dark:text-emerald-100 mb-4">
-            SunnahLife <span class="text-emerald-600 dark:text-emerald-400">Quran</span>
+          <h1 class="text-4xl md:text-5xl font-bold text-calligraphy-900 dark:text-calligraphy-100 mb-4">
+            QuranLight <span class="text-calligraphy-600 dark:text-calligraphy-400">Digital Mushaf</span>
           </h1>
           
-          <p class="text-lg md:text-xl text-emerald-700 dark:text-emerald-300 mb-6 leading-relaxed">
-            Read, Listen and Learn Quran • Word-by-Word Translation
+          <p class="text-lg md:text-xl text-calligraphy-700 dark:text-calligraphy-300 mb-6 leading-relaxed">
+            Let Divine Light Guide Your Journey • Word-by-Word Translation
           </p>
 
           <!-- Bismillah -->
           <div class="mb-6">
-            <p class="text-xl md:text-2xl font-arabic text-emerald-800 dark:text-emerald-200 mb-2">
+            <p class="text-xl md:text-2xl font-arabic text-calligraphy-800 dark:text-calligraphy-200 mb-2">
               بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
             </p>
-            <p class="text-sm text-emerald-600 dark:text-emerald-400 italic">
+            <p class="text-sm text-calligraphy-600 dark:text-calligraphy-400 italic">
               "In the name of Allah, the Entirely Merciful, the Especially Merciful"
             </p>
           </div>
@@ -108,25 +108,25 @@ onMounted(() => {
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
       <!-- Continue Reading Section -->
       <section v-if="lastReadPosition || recentlyRead.length > 0" class="space-y-4">
-        <h2 class="text-xl font-bold text-emerald-900 dark:text-emerald-100">Continue Your Journey</h2>
+        <h2 class="text-xl font-bold text-calligraphy-900 dark:text-calligraphy-100">Continue Your Journey</h2>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <!-- Last Read Position -->
-          <div v-if="lastReadPosition" class="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-gray-800 dark:to-gray-700 rounded-xl shadow-lg p-4 border-l-4 border-emerald-500">
+          <div v-if="lastReadPosition" class="bg-gradient-to-r from-calligraphy-50 to-cream-50 dark:from-gray-800 dark:to-gray-700 rounded-xl shadow-lg p-4 border-l-4 border-calligraphy-500">
             <div class="flex items-center space-x-3 mb-2">
-              <div class="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center">
+              <div class="w-8 h-8 bg-calligraphy-600 rounded-full flex items-center justify-center">
                 <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z"/>
                 </svg>
               </div>
               <div>
-                <h3 class="font-semibold text-emerald-900 dark:text-emerald-100 text-sm">Last Read</h3>
-                <p class="text-xs text-emerald-700 dark:text-emerald-300">Continue where you left off</p>
+                <h3 class="font-semibold text-calligraphy-900 dark:text-calligraphy-100 text-sm">Last Read</h3>
+                <p class="text-xs text-calligraphy-700 dark:text-calligraphy-300">Continue where you left off</p>
               </div>
             </div>
             <router-link 
               :to="`/surah/${lastReadPosition.surahNumber}#verse-${lastReadPosition.verseNumber}`"
-              class="block text-emerald-700 dark:text-emerald-300 hover:text-emerald-900 dark:hover:text-emerald-200 text-sm font-medium"
+              class="block text-calligraphy-700 dark:text-calligraphy-300 hover:text-calligraphy-900 dark:hover:text-calligraphy-200 text-sm font-medium"
             >
               Surah {{ lastReadPosition.surahNumber }}, Verse {{ lastReadPosition.verseNumber }}
             </router-link>
@@ -138,14 +138,14 @@ onMounted(() => {
             :key="`${progress.surahNumber}-${progress.verseNumber}`"
             class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4"
           >
-            <h3 class="font-semibold text-emerald-900 dark:text-emerald-100 text-sm mb-2">Recently Read</h3>
+            <h3 class="font-semibold text-calligraphy-900 dark:text-calligraphy-100 text-sm mb-2">Recently Read</h3>
             <router-link 
               :to="`/surah/${progress.surahNumber}#verse-${progress.verseNumber}`"
-              class="text-emerald-700 dark:text-emerald-300 hover:text-emerald-900 dark:hover:text-emerald-200 text-sm font-medium"
+              class="text-calligraphy-700 dark:text-calligraphy-300 hover:text-calligraphy-900 dark:hover:text-calligraphy-200 text-sm font-medium"
             >
               Surah {{ progress.surahNumber }}, Verse {{ progress.verseNumber }}
             </router-link>
-            <p class="text-xs text-emerald-600 dark:text-emerald-400 mt-1">
+            <p class="text-xs text-calligraphy-600 dark:text-calligraphy-400 mt-1">
               {{ new Date(progress.timestamp).toLocaleDateString() }}
             </p>
           </div>
@@ -154,17 +154,17 @@ onMounted(() => {
 
       <!-- Featured Surahs -->
       <section class="space-y-4">
-        <h2 class="text-xl font-bold text-emerald-900 dark:text-emerald-100">Featured Surahs</h2>
+        <h2 class="text-xl font-bold text-calligraphy-900 dark:text-calligraphy-100">Featured Surahs</h2>
         
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           <router-link
             v-for="featured in featuredSurahs"
             :key="featured.number"
             :to="`/surah/${featured.number}`"
-            class="group text-center p-4 hover:bg-emerald-50 dark:hover:bg-gray-800 rounded-xl transition-all duration-200"
+            class="group text-center p-4 hover:bg-calligraphy-50 dark:hover:bg-gray-800 rounded-xl transition-all duration-200"
           >
             <!-- Round Circle with Surah Names -->
-            <div class="w-20 h-20 mx-auto mb-3 bg-gradient-to-br from-emerald-600 via-teal-600 to-emerald-700 rounded-full flex flex-col items-center justify-center shadow-xl border-3 border-emerald-300 group-hover:shadow-2xl group-hover:scale-105 transition-all duration-300 relative">
+            <div class="w-20 h-20 mx-auto mb-3 bg-gradient-to-br from-calligraphy-600 via-cream-600 to-calligraphy-700 rounded-full flex flex-col items-center justify-center shadow-xl border-3 border-calligraphy-300 group-hover:shadow-2xl group-hover:scale-105 transition-all duration-300 relative">
               <!-- Decorative Islamic Pattern -->
               <div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/10 to-transparent"></div>
               <!-- Surah Number Badge -->
@@ -176,14 +176,14 @@ onMounted(() => {
                 {{ quranStore.surahs.find(s => s.number === featured.number)?.englishName || `Surah ${featured.number}` }}
               </span>
               <!-- Arabic Name -->
-              <span class="text-emerald-100 text-sm font-arabic-elegant mt-1 leading-tight relative z-10">
+              <span class="text-calligraphy-100 text-sm font-arabic-elegant mt-1 leading-tight relative z-10">
                 {{ quranStore.surahs.find(s => s.number === featured.number)?.name || '' }}
               </span>
             </div>
-            <h3 class="font-semibold text-emerald-900 dark:text-emerald-100 text-sm mb-1">
+            <h3 class="font-semibold text-calligraphy-900 dark:text-calligraphy-100 text-sm mb-1">
               {{ featured.highlight }}
             </h3>
-            <p class="text-xs text-emerald-600 dark:text-emerald-400 font-medium">
+            <p class="text-xs text-calligraphy-600 dark:text-calligraphy-400 font-medium">
               {{ quranStore.surahs.find(s => s.number === featured.number)?.numberOfAyahs || 0 }} Ayahs
             </p>
           </router-link>
@@ -193,7 +193,7 @@ onMounted(() => {
       <!-- Recent Bookmarks -->
       <section v-if="recentBookmarks.length > 0" class="space-y-4">
         <div class="flex items-center justify-between">
-          <h2 class="text-xl font-bold text-emerald-900 dark:text-emerald-100">Recent Bookmarks</h2>
+          <h2 class="text-xl font-bold text-calligraphy-900 dark:text-calligraphy-100">Recent Bookmarks</h2>
           <router-link to="/bookmarks">
             <Button variant="ghost" size="sm">
               View All
@@ -218,13 +218,13 @@ onMounted(() => {
                 <path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
               </svg>
               <div class="flex-1 min-w-0">
-                <h3 class="font-semibold text-emerald-900 dark:text-emerald-100 truncate text-sm">
+                <h3 class="font-semibold text-calligraphy-900 dark:text-calligraphy-100 truncate text-sm">
                   {{ bookmark.surahName }}
                 </h3>
-                <p class="text-xs text-emerald-700 dark:text-emerald-300">
+                <p class="text-xs text-calligraphy-700 dark:text-calligraphy-300">
                   Verse {{ bookmark.verseNumber }}
                 </p>
-                <p class="text-xs text-emerald-600 dark:text-emerald-400 mt-1 line-clamp-2">
+                <p class="text-xs text-calligraphy-600 dark:text-calligraphy-400 mt-1 line-clamp-2">
                   {{ bookmark.verseText }}
                 </p>
               </div>
@@ -236,8 +236,8 @@ onMounted(() => {
       <!-- All Surahs Preview -->
       <section class="space-y-4">
         <div class="flex items-center justify-between">
-          <h2 class="text-xl font-bold text-emerald-900 dark:text-emerald-100">All Surahs</h2>
-          <span class="text-sm text-emerald-600 dark:text-emerald-400">114 chapters</span>
+          <h2 class="text-xl font-bold text-calligraphy-900 dark:text-calligraphy-100">All Surahs</h2>
+          <span class="text-sm text-calligraphy-600 dark:text-calligraphy-400">114 chapters</span>
         </div>
         
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
@@ -245,10 +245,10 @@ onMounted(() => {
             v-for="surah in surahs"
             :key="surah.number"
             :to="`/surah/${surah.number}`"
-            class="group text-center p-3 hover:bg-emerald-50 dark:hover:bg-gray-800 rounded-xl transition-all duration-200"
+            class="group text-center p-3 hover:bg-calligraphy-50 dark:hover:bg-gray-800 rounded-xl transition-all duration-200"
           >
             <!-- Round Circle with Surah Names -->
-            <div class="w-18 h-18 mx-auto mb-2 bg-gradient-to-br from-emerald-600 via-teal-600 to-emerald-700 rounded-full flex flex-col items-center justify-center shadow-lg border-2 border-emerald-300 group-hover:shadow-xl group-hover:scale-105 transition-all duration-200 relative">
+            <div class="w-18 h-18 mx-auto mb-2 bg-gradient-to-br from-calligraphy-600 via-cream-600 to-calligraphy-700 rounded-full flex flex-col items-center justify-center shadow-lg border-2 border-calligraphy-300 group-hover:shadow-xl group-hover:scale-105 transition-all duration-200 relative">
               <!-- Decorative gradient overlay -->
               <div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/10 to-transparent"></div>
               <!-- Surah Number Badge -->
@@ -260,11 +260,11 @@ onMounted(() => {
                 {{ surah.englishName }}
               </span>
               <!-- Arabic Name -->
-              <span class="text-emerald-100 text-xs font-arabic mt-0.5 leading-tight relative z-10">
+              <span class="text-calligraphy-100 text-xs font-arabic mt-0.5 leading-tight relative z-10">
                 {{ surah.name }}
               </span>
             </div>
-            <div class="text-xs text-emerald-600 dark:text-emerald-400 font-medium">
+            <div class="text-xs text-calligraphy-600 dark:text-calligraphy-400 font-medium">
               {{ surah.numberOfAyahs }} Ayahs
             </div>
           </router-link>
@@ -273,46 +273,46 @@ onMounted(() => {
     </div>
 
     <!-- Features Section -->
-    <section class="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-gray-800 dark:to-gray-700 py-12">
+    <section class="bg-gradient-to-r from-calligraphy-50 to-cream-50 dark:from-gray-800 dark:to-gray-700 py-12">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-8">
-          <h2 class="text-2xl font-bold text-emerald-900 dark:text-emerald-100 mb-3">
-            Why Choose SunnahLife Quran?
+          <h2 class="text-2xl font-bold text-calligraphy-900 dark:text-calligraphy-100 mb-3">
+            Why Choose QuranLight?
           </h2>
-          <p class="text-emerald-700 dark:text-emerald-300">
+          <p class="text-calligraphy-700 dark:text-calligraphy-300">
             Experience the Quran with modern, interactive features
           </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div class="text-center p-4">
-            <div class="w-12 h-12 bg-emerald-100 dark:bg-emerald-900 rounded-full flex items-center justify-center mx-auto mb-3">
-              <svg class="w-6 h-6 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-12 h-12 bg-calligraphy-100 dark:bg-calligraphy-900 rounded-full flex items-center justify-center mx-auto mb-3">
+              <svg class="w-6 h-6 text-calligraphy-600 dark:text-calligraphy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
               </svg>
             </div>
-            <h3 class="text-base font-semibold text-emerald-900 dark:text-emerald-100 mb-2">Word-by-Word</h3>
-            <p class="text-sm text-emerald-700 dark:text-emerald-300">Interactive exploration of each Arabic word with translation</p>
+            <h3 class="text-base font-semibold text-calligraphy-900 dark:text-calligraphy-100 mb-2">Word-by-Word</h3>
+            <p class="text-sm text-calligraphy-700 dark:text-calligraphy-300">Interactive exploration of each Arabic word with translation</p>
           </div>
 
           <div class="text-center p-4">
-            <div class="w-12 h-12 bg-emerald-100 dark:bg-emerald-900 rounded-full flex items-center justify-center mx-auto mb-3">
-              <svg class="w-6 h-6 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-12 h-12 bg-calligraphy-100 dark:bg-calligraphy-900 rounded-full flex items-center justify-center mx-auto mb-3">
+              <svg class="w-6 h-6 text-calligraphy-600 dark:text-calligraphy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 12.536a4 4 0 11-7.072 0m7.072 0A8.001 8.001 0 0112 4a8.001 8.001 0 016.536 8.536m-7.072 0L12 19"/>
               </svg>
             </div>
-            <h3 class="text-base font-semibold text-emerald-900 dark:text-emerald-100 mb-2">Audio Recitation</h3>
-            <p class="text-sm text-emerald-700 dark:text-emerald-300">Listen to beautiful recitations from multiple reciters</p>
+            <h3 class="text-base font-semibold text-calligraphy-900 dark:text-calligraphy-100 mb-2">Audio Recitation</h3>
+            <p class="text-sm text-calligraphy-700 dark:text-calligraphy-300">Listen to beautiful recitations from multiple reciters</p>
           </div>
 
           <div class="text-center p-4">
-            <div class="w-12 h-12 bg-emerald-100 dark:bg-emerald-900 rounded-full flex items-center justify-center mx-auto mb-3">
-              <svg class="w-6 h-6 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-12 h-12 bg-calligraphy-100 dark:bg-calligraphy-900 rounded-full flex items-center justify-center mx-auto mb-3">
+              <svg class="w-6 h-6 text-calligraphy-600 dark:text-calligraphy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
               </svg>
             </div>
-            <h3 class="text-base font-semibold text-emerald-900 dark:text-emerald-100 mb-2">Mobile Optimized</h3>
-            <p class="text-sm text-emerald-700 dark:text-emerald-300">Beautiful, responsive design for all devices</p>
+            <h3 class="text-base font-semibold text-calligraphy-900 dark:text-calligraphy-100 mb-2">Mobile Optimized</h3>
+            <p class="text-sm text-calligraphy-700 dark:text-calligraphy-300">Beautiful, responsive design for all devices</p>
           </div>
         </div>
       </div>
@@ -355,7 +355,7 @@ onMounted(() => {
 /* Islamic geometric pattern effect */
 .group:hover .w-20,
 .group:hover .w-18 {
-  background: linear-gradient(135deg, #059669 0%, #0d9488 50%, #065f46 100%);
+  background: linear-gradient(135deg, #8b4513 0%, #c04000 50%, #800020 100%);
 }
 
 /* Golden accent hover effect */
@@ -366,8 +366,8 @@ onMounted(() => {
 
 /* Smooth animations */
 @keyframes glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
-  50% { box-shadow: 0 0 30px rgba(16, 185, 129, 0.5), 0 0 40px rgba(16, 185, 129, 0.2); }
+  0%, 100% { box-shadow: 0 0 20px rgba(139, 69, 19, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(139, 69, 19, 0.5), 0 0 40px rgba(139, 69, 19, 0.2); }
 }
 
 .group:hover .w-20,

@@ -10,7 +10,9 @@
       "Bash(grep:*)",
       "Bash(sed:*)",
       "Bash(pkill:*)",
-      "Bash(killall:*)"
+      "Bash(killall:*)",
+      "WebFetch(domain:quranwbw.com)",
+      "Bash(rg:*)"
     ],
     "deny": []
   }

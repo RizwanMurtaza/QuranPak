@@ -1,23 +1,23 @@
 <template>
   <aside 
     :class="[
-      'fixed lg:static inset-y-0 left-0 z-40 w-80 bg-gradient-to-b from-emerald-50 to-teal-50 dark:from-gray-900 dark:to-gray-800 border-r-2 border-emerald-200 dark:border-emerald-700 transform transition-transform duration-300 ease-in-out lg:transform-none shadow-xl',
+      'fixed lg:static inset-y-0 left-0 z-40 w-80 bg-gradient-to-b from-calligraphy-50 to-cream-50 dark:from-gray-900 dark:to-gray-800 border-r-2 border-calligraphy-200 dark:border-calligraphy-700 transform transition-transform duration-300 ease-in-out lg:transform-none shadow-xl',
       isOpen ? 'translate-x-0' : '-translate-x-full'
     ]"
   >
     <!-- Sidebar Header -->
-    <div class="flex items-center justify-between h-24 px-6 border-b-2 border-emerald-200 dark:border-emerald-700 bg-gradient-to-r from-emerald-100 to-teal-100 dark:from-gray-800 dark:to-gray-700">
+    <div class="flex items-center justify-between h-24 px-6 border-b-2 border-calligraphy-200 dark:border-calligraphy-700 bg-gradient-to-r from-calligraphy-100 to-cream-100 dark:from-gray-800 dark:to-gray-700">
       <div class="flex items-center space-x-3">
-        <div class="w-8 h-8 bg-gradient-to-br from-emerald-600 to-teal-600 rounded-lg flex items-center justify-center">
+        <div class="w-8 h-8 bg-gradient-to-br from-calligraphy-600 to-cream-600 rounded-lg flex items-center justify-center">
           <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
           </svg>
         </div>
-        <h2 class="text-lg font-bold text-emerald-800 dark:text-emerald-200">Al-Quran</h2>
+        <h2 class="text-lg font-bold text-calligraphy-800 dark:text-calligraphy-200">Al-Quran</h2>
       </div>
       <button 
         @click="$emit('close')"
-        class="lg:hidden p-2 rounded-md text-emerald-700 dark:text-emerald-300 hover:bg-emerald-200 dark:hover:bg-gray-600 transition-colors"
+        class="lg:hidden p-2 rounded-md text-calligraphy-700 dark:text-calligraphy-300 hover:bg-calligraphy-200 dark:hover:bg-gray-600 transition-colors"
       >
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -55,21 +55,21 @@
       <!-- Surah List -->
       <div class="p-4">
         <div class="flex items-center justify-between mb-4">
-          <h3 class="text-base font-bold text-emerald-800 dark:text-emerald-200 flex items-center space-x-2">
+          <h3 class="text-base font-bold text-calligraphy-800 dark:text-calligraphy-200 flex items-center space-x-2">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
             </svg>
             <span>Surahs</span>
           </h3>
           <div class="relative">
-            <svg class="absolute left-2 top-1/2 transform -translate-y-1/2 w-3 h-3 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="absolute left-2 top-1/2 transform -translate-y-1/2 w-3 h-3 text-calligraphy-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
             </svg>
             <input
               v-model="surahSearchQuery"
               type="text"
               placeholder="Search..."
-              class="w-28 pl-7 pr-2 py-1 text-xs border border-emerald-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-emerald-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              class="w-28 pl-7 pr-2 py-1 text-xs border border-calligraphy-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-calligraphy-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-calligraphy-500"
             >
           </div>
         </div>
@@ -79,25 +79,25 @@
             v-for="surah in filteredSurahs"
             :key="surah.number"
             :to="`/surah/${surah.number}`"
-            class="block p-3 rounded-xl text-sm hover:bg-emerald-100 dark:hover:bg-gray-700 transition-all duration-200 group border border-transparent hover:border-emerald-200 dark:hover:border-gray-600 hover:shadow-md"
-            :class="{ 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-300 shadow-sm': $route.params.id === surah.number.toString() }"
+            class="block p-3 rounded-xl text-sm hover:bg-calligraphy-100 dark:hover:bg-gray-700 transition-all duration-200 group border border-transparent hover:border-calligraphy-200 dark:hover:border-gray-600 hover:shadow-md"
+            :class="{ 'bg-calligraphy-50 dark:bg-calligraphy-900/20 border-calligraphy-300 shadow-sm': $route.params.id === surah.number.toString() }"
           >
             <div class="flex items-center justify-between">
               <div class="flex items-center space-x-3">
-                <div class="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-emerald-600 to-teal-600 rounded-xl flex items-center justify-center shadow-md">
+                <div class="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-calligraphy-600 to-cream-600 rounded-xl flex items-center justify-center shadow-md">
                   <span class="text-xs font-bold text-white">
                     {{ surah.number }}
                   </span>
                 </div>
                 <div class="min-w-0 flex-1">
-                  <p class="text-emerald-900 dark:text-emerald-100 font-semibold truncate">{{ surah.englishName }}</p>
-                  <p class="text-sm text-emerald-700 dark:text-emerald-300 font-arabic truncate">{{ surah.arabicName }}</p>
-                  <p class="text-xs text-emerald-600 dark:text-emerald-400">{{ surah.revelationType }} • {{ surah.numberOfAyahs }} Ayahs</p>
+                  <p class="text-calligraphy-900 dark:text-calligraphy-100 font-semibold truncate">{{ surah.englishName }}</p>
+                  <p class="text-sm text-calligraphy-700 dark:text-calligraphy-300 font-arabic truncate">{{ surah.arabicName }}</p>
+                  <p class="text-xs text-calligraphy-600 dark:text-calligraphy-400">{{ surah.revelationType }} • {{ surah.numberOfAyahs }} Ayahs</p>
                 </div>
               </div>
               <div class="flex flex-col items-end">
                 <div class="w-2 h-2 bg-gold-500 rounded-full mb-1 opacity-60"></div>
-                <div class="text-xs text-emerald-600 dark:text-emerald-400 font-medium">
+                <div class="text-xs text-calligraphy-600 dark:text-calligraphy-400 font-medium">
                   {{ surah.numberOfAyahs }}
                 </div>
               </div>

@@ -1,10 +1,10 @@
 <template>
   <div class="space-y-3">
     <div class="flex items-center justify-between">
-      <h3 class="text-base font-semibold text-emerald-900 dark:text-emerald-100">
+      <h3 class="text-base font-semibold text-calligraphy-900 dark:text-calligraphy-100">
         Select Translations
       </h3>
-      <span class="text-xs text-emerald-700 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-900/30 px-2 py-1 rounded-full">
+      <span class="text-xs text-calligraphy-700 dark:text-calligraphy-300 bg-calligraphy-100 dark:bg-calligraphy-900/30 px-2 py-1 rounded-full">
         {{ selectedTranslations.length }} selected
       </span>
     </div>
@@ -34,8 +34,8 @@
       <div
         v-for="translation in groupedTranslations[activeLanguage] || []"
         :key="translation.identifier"
-        class="flex items-center space-x-3 p-3 rounded-lg hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors border border-transparent"
-        :class="{ 'bg-emerald-50/50 dark:bg-emerald-900/10 border-emerald-200 dark:border-emerald-800': selectedTranslations.includes(translation.identifier) }"
+        class="flex items-center space-x-3 p-3 rounded-lg hover:bg-calligraphy-50 dark:hover:bg-calligraphy-900/20 transition-colors border border-transparent"
+        :class="{ 'bg-calligraphy-50/50 dark:bg-calligraphy-900/10 border-calligraphy-200 dark:border-calligraphy-800': selectedTranslations.includes(translation.identifier) }"
       >
         <input
           :id="translation.identifier"
@@ -43,24 +43,24 @@
           :value="translation.identifier"
           :checked="selectedTranslations.includes(translation.identifier)"
           @change="toggleTranslation(translation.identifier)"
-          class="h-4 w-4 text-emerald-600 focus:ring-emerald-500 border-emerald-300 rounded"
+          class="h-4 w-4 text-calligraphy-600 focus:ring-calligraphy-500 border-calligraphy-300 rounded"
         >
         <label 
           :for="translation.identifier" 
           class="flex-1 cursor-pointer"
           :class="translation.direction === 'rtl' ? 'text-right' : 'text-left'"
         >
-          <div class="font-medium text-emerald-900 dark:text-emerald-100">
+          <div class="font-medium text-calligraphy-900 dark:text-calligraphy-100">
             {{ translation.englishName }}
           </div>
-          <div class="text-sm text-emerald-700 dark:text-emerald-300">
+          <div class="text-sm text-calligraphy-700 dark:text-calligraphy-300">
             {{ translation.name }}
           </div>
         </label>
         
         <!-- Primary Translation Badge -->
         <div v-if="selectedTranslations[0] === translation.identifier" class="flex-shrink-0">
-          <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200">
+          <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-calligraphy-100 text-calligraphy-800 dark:bg-calligraphy-900 dark:text-calligraphy-200">
             Primary
           </span>
         </div>
@@ -104,26 +104,26 @@
     </div>
 
     <!-- Compact Preview Section -->
-    <div v-if="selectedTranslations.length > 0" class="mt-4 p-3 bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 rounded-md border border-emerald-200 dark:border-emerald-800">
-      <h4 class="font-medium text-sm text-emerald-900 dark:text-emerald-100 mb-2">Preview</h4>
+    <div v-if="selectedTranslations.length > 0" class="mt-4 p-3 bg-gradient-to-r from-calligraphy-50 to-cream-50 dark:from-calligraphy-900/20 dark:to-cream-900/20 rounded-md border border-calligraphy-200 dark:border-calligraphy-800">
+      <h4 class="font-medium text-sm text-calligraphy-900 dark:text-calligraphy-100 mb-2">Preview</h4>
       <div class="space-y-2">
         <div
           v-for="translationId in selectedTranslations.slice(0, 2)"
           :key="translationId"
           class="text-xs"
         >
-          <div class="font-medium text-emerald-800 dark:text-emerald-200 mb-0.5">
+          <div class="font-medium text-calligraphy-800 dark:text-calligraphy-200 mb-0.5">
             {{ getTranslationInfo(translationId)?.englishName }}
           </div>
           <div 
-            class="text-emerald-700 dark:text-emerald-300 italic line-clamp-1"
+            class="text-calligraphy-700 dark:text-calligraphy-300 italic line-clamp-1"
             :class="getTranslationDirection(translationId) === 'rtl' ? 'text-right' : 'text-left'"
           >
             {{ getSampleText(translationId) }}
           </div>
         </div>
         
-        <div v-if="selectedTranslations.length > 2" class="text-xs text-emerald-600 dark:text-emerald-400">
+        <div v-if="selectedTranslations.length > 2" class="text-xs text-calligraphy-600 dark:text-calligraphy-400">
           +{{ selectedTranslations.length - 2 }} more selected
         </div>
       </div>
